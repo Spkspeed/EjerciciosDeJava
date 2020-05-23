@@ -1,25 +1,20 @@
-PARA TRANSFERIR CODIGOS AL REPOSITORIO LOCAL
-
-ubicar la carpeta contenedora del ejercicio
-
-Escribir el codigo " git add " 
-
-Para ver los archivos de la carpeta y el estado en el que se encuentran escribir " git status "
-
-Luego escribir el comando " git commit -m "(escribir algun titulo)" " para marcar el o los archivos que seran enviados al repositorio global.
-
-Por ultimo escribir " git push -u origin master " para transferir los archivos marcados.
-
-
-
-
-
-
-
-
 PARA CREAR EL RESPOSITORIO LOCAL POR PRIMERA VEZ
 
 git init para crear por primera vez el repositorio local y se llevara a cabo en la carpeta en la que se encuentre ubicado.
 
-git clone se utiliza para sincronizar el repositorio local con el repositorio de tu cuenta en github (solo es necesario hacerlo una vez).
+git clone <git url>se utiliza para sincronizar el repositorio local con el repositorio de tu cuenta en github (solo es necesario hacerlo una vez).
+
+
+PARA TRANSFERIR CODIGOS AL REPOSITORIO LOCAL
+
+ubicarse la carpeta contenedora del ejercicio
+
+git add ejercicio3.java : Escribir el codigo " git add "
+git add . : no es recomendable usarlo ya que agrega todo lo que encuentra para ser commiteado
+
+git status : Para ver los archivos de la carpeta y el estado en el que se encuentran escribir " git status "
+
+git commit -m "(escribir algun titulo)" : Sirve para marcar el o los archivos que seran enviados al repositorio local y con push se llevan al remoto.
+
+git push -u origin master : Por ultimo usar este comando para transferir los archivos marcados al repositorio remoto.
 

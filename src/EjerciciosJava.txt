@@ -6,8 +6,8 @@ Ejercicios:
 
 3.- Hacer un programa que capture una oracion e imprima cada palabra linea por linea
 
-3.- Idem al ejercicio 3 pero que la palabra se imprima al reves
+4.- Idem al ejercicio 3 pero que la palabra se imprima al reves
 
-4.- Hacer un programa que detecte si una palabra(solo una palabra) es palindromo
+5.- Hacer un programa que detecte si una palabra(solo una palabra) es palindromo
 
-5.- Hacer un programa que detecte si una oracion tiene uno o mas palindromos
+6.- Hacer un programa que detecte si una oracion tiene uno o mas palindromos

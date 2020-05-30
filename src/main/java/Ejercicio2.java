@@ -9,7 +9,7 @@ import java.util.Scanner;
  */
 public class Ejercicio2 {
 
-    public static void main(String args[]){
+    public static void main(String args[]) {
         Scanner in = new Scanner(System.in);
         String nombre = "";
         int numUno = 0, numDos = 0, resultado = 0, operacion = 0;
@@ -26,17 +26,17 @@ public class Ejercicio2 {
         System.out.println("Deme el segundo valor para su operacion");
         numDos = in.nextInt();
 
-        if(operacion == 1) {
+        if (operacion == 1) {
             resultado = suma(numUno, numDos);
             System.out.println("Hola " + nombre + ", el resultado de tu operacion es: " + resultado);
-        } else if(operacion == 2) {
+        } else if (operacion == 2) {
             resultado = resta(numUno, numDos);
             System.out.println("Hola " + nombre + ", el resultado de tu operacion es: " + resultado);
-        } else if(operacion == 3) {
+        } else if (operacion == 3) {
             resultado = multiplicacion(numUno, numDos);
             System.out.println("Hola " + nombre + ", el resultado de tu operacion es: " + resultado);
-        } else if(operacion == 4) {
-            resultado = division(numUno, numDos);
+        } else if (operacion == 4) {
+            resultado = (int) division(numUno, numDos);
             System.out.println("Hola " + nombre + ", el resultado de tu operacion es: " + resultado);
         } else {
             System.out.println("Error, " + nombre + ", los codigos para realizar alguna operacion solo pueden ser: 1, 2, 3 y 4.");
@@ -48,16 +48,18 @@ public class Ejercicio2 {
         int resultado = numero1 + numero2;
         return resultado;
     }
+
     public static int resta(int numero1, int numero2) {
         int resultado = numero1 - numero2;
         return resultado;
     }
+
     public static int multiplicacion(int numero1, int numero2) {
         int resultado = numero1 * numero2;
         return resultado;
     }
-    public static int division(int numero1, int numero2) {
-        int resultado = numero1 / numero2;
-        return resultado;
+
+    public static double division(double numero1, double numero2) {
+        return numero1 / numero2;
     }
 }

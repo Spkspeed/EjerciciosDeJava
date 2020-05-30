@@ -1,23 +1,34 @@
 import java.util.Scanner;
+
 /*
-1. El final del proceso debe terminar sin ningun error.
-2. Pueden existir diferentes formas de ralizar la misma accion y presentar los mismos errores pero con diferente solucion.
-3. Al no conocer una forma de llevar a cabo un proceso, realizar una busqueda de la clase de herramienta que hace falta.
+1. si utilizamos doble comilla ("") nos referimos a que estamos manejando un objeto de tipo String y al
+    usar comillas ('') es para tipo char por ejemplo char a == ' '
+2.
+3.
+
  */
 public class Ejercicio3 {
-    public static void main(String args[]){
-
+    public static void main(String args[]) {
         String oracion = "";
         int num_caracteres = 0;
         Scanner entrada = new Scanner(System.in);
+        int incrementador = 0;
 
         System.out.println("Escriba los caracteres que desee ingresar: ");
         oracion = entrada.nextLine();
 
         num_caracteres = oracion.length();
 
-        for(int i = 0; i <= (num_caracteres - 1); i++){
-            System.out.println(oracion.charAt(i));
+        char palabraInversa[] = new char[oracion.length()];
+
+        for (int i = 0; i <= (num_caracteres - 1); i++) {
+            palabraInversa[incrementador] = oracion.charAt(i);
+            if (oracion.charAt(i) == ' ') {
+                i++;
+                System.out.println(' ');
+
+            }
+            System.out.print(oracion.charAt(i));
         }
     }
 }

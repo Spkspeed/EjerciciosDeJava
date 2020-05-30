@@ -19,11 +19,6 @@ public class Ejercicio4{
 
         for(int i = (num_caracteres - 1); i >= 0; i--){
             System.out.println(oracion.charAt(i));
-        }
+       }
     }
 }
-
-/*
- i = 0
- i == 0
- */

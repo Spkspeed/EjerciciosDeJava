@@ -1,0 +1,14 @@
+/*
+1. se utiliza para llevar a cabo controles sobre los codigos que construimos.
+
+2. Que son los ciclos de vida: las diferentes etapas del proceso que lleva a cabo un codigo y en las
+ que podemos interferir.
+
+3.- Que son los modulos: son las herramientas que nos permiten poder realizar las diferentes
+funcionalidades correctamente (usar redes, conexiones a bases de datos, sistemas de seguridad).
+
+4.- Que comandos se usan en maven por linea de comandos: " mvn clean install "
+
+
+ instalacion: binario.zip, agregarlo al path de window.
+ */

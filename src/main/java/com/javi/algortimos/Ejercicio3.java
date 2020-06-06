@@ -1,4 +1,5 @@
-import java.util.ArrayList;
+package com.javi.algortimos;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;

@@ -1,3 +1,5 @@
+package com.javi.algortimos;
+
 import java.util.Scanner;
 
 /*
@@ -6,7 +8,7 @@ import java.util.Scanner;
 3. siempre pensar en un programa con el menor codigo posible y probarlo por partes (TDD).
 4. Los metodos comprimen codigos para volver a utilizar de forma mas rapida.
 5. utilizar mas metodos para evitar usar mas de 100 lineas en un metodo.
-6. Evitar usar objetos estaticos e instanciarlos en lo posible o sea (new Ejercicio2())
+6. Evitar usar objetos estaticos e instanciarlos en lo posible o sea (new com.javi.algortimos.Ejercicio2())
  */
 public class Ejercicio2 {
 

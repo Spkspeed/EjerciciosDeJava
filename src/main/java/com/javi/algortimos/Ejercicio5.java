@@ -1,3 +1,5 @@
+package com.javi.algortimos;
+
 import java.util.Scanner;
 
 /**

@@ -1,4 +1,4 @@
-/*
+package com.javi.algortimos;/*
 para comparar caracteres hay que tener en cuenta que son de tipo char y no se tienen que utilizar doble comillas (""), lo correcto es ('')
  */
 

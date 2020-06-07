@@ -2,7 +2,9 @@ package com.javi.poo.registroAsistencias;
 
 public class Alumno extends Persona {
 
-    protected Alumno(String nombre, String apellido) { // obliga a que ingrese un nombre y appellido.
+    // Los constructores siempre deben ser publicos
+    // Salvo que quieras implementar un patron de diseño que seria un SINGLETON
+    public Alumno(String nombre, String apellido) { // obliga a que ingrese un nombre y appellido.
         this.setNombre(nombre);
         this.setApellido(apellido);
     }

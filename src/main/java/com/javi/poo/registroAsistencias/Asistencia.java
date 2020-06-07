@@ -9,6 +9,14 @@ import java.util.Map;
  */
 public class Asistencia {
 
-    Map<Alumno, Boolean> asistencias = new HashMap(); // Cada asistencia debe tener Alumno - Asistencia
+    // detalle de ingresar el codigo y valor desde la formacion del map.
+    private Map<Alumno, Boolean> asistencias = new HashMap(); // Cada asistencia debe tener Alumno - Asistencia
 
+    public Map<Alumno, Boolean> getAsistencias() {
+        return asistencias;
+    }
+
+    public void setAsistencias(Map<Alumno, Boolean> asistencias) {
+        this.asistencias = asistencias;
+    }
 }

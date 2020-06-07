@@ -5,6 +5,13 @@ import java.util.List;
 
 public class  Aula {
 
-    List<Alumno> listaAlumnos = new ArrayList();
+    private List<Alumno> listaAlumnos = new ArrayList();
 
+    public List<Alumno> getListaAlumnos() {
+        return listaAlumnos;
+    }
+
+    public void setListaAlumnos(List<Alumno> listaAlumnos) {
+        this.listaAlumnos = listaAlumnos;
+    }
 }

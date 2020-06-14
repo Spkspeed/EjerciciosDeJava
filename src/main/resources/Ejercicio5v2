@@ -1,0 +1,9 @@
+1. Hay que evitar utilizar atributos globlaes en los metodos que construimos porque evita que se realize un
+encapsulamiento completo del metodo y en mayores consecuencias el metodo podria depender de demasiadas variables
+globales y no utilizarse de forma independiente debido a la complejidad de sus relaciones.
+
+2. En el test, el metodo boolean, al igual que otros, puede regresar valores (true o false) incluso en un metodo perfectamente
+encapsulado donde no se vea que se pueda separar ni una sola variable, el valor puede ser obtenido sencillamente
+creando otra variable para que lo reciba y se le atribuya ese valor invocando el metodo (variable = metodoBoolean();).
+
+3. Existen una carpeta para guardar archivos que no sean codigos llamada Resources recursos.

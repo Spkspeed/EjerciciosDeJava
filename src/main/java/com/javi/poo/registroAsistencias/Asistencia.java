@@ -19,4 +19,34 @@ public class Asistencia {
     public void setAsistencias(Map<Alumno, Boolean> asistencias) {
         this.asistencias = asistencias;
     }
+
+
+
+
+
+    private Map<Docente, Boolean> asistenciasDocente = new HashMap();
+
+    public Map<Docente, Boolean> getAsistenciasDocente() {
+        return asistenciasDocente;
+    }
+
+    public void setAsistenciasDocente(Map<Alumno, Boolean> asistencias) {
+        this.asistencias = asistencias;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

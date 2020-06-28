@@ -1,7 +1,5 @@
 package com.javi.hilos;
 
-import jdk.internal.org.objectweb.asm.tree.TryCatchBlockNode;
-
 /*
     El metodo holaMundo al ser un metodo normal, se obtiene una copia por cada instancia creada
     static: Hace que un metodo no pueda ser copiado en una instancia nueva y obliga a ser usado por todos los hilos
@@ -31,7 +29,6 @@ public class Hilo1 extends Thread {
 
     @Override
     public void run() {
-
         holaMundo(this.getName());
     }
 

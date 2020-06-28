@@ -8,38 +8,29 @@ import org.springframework.test.context.junit4.SpringRunner;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 
-/*
 
-
- */
 
 @RunWith(SpringRunner.class)
-public class MainAsistenciasTest{
+public class MainAsistencias2Test extends Exception{
+
 
     @Test
-    public void testAsistencias() {
+    public void recopiladorDeAsistencias() {
 
-        Alumno alumnoEma = new Alumno("Emanuel", "Soliz");
-        Alumno alumnoJavi = new Alumno("Javier", "Soliz");
-        Alumno alumnoAriel = new Alumno("Ariel", "Jarpa Soliz");
-        Alumno alumnoAlfredo = new Alumno("Alfredo", "Villegas");
-        Docente docenteRaul = new Docente("Raul", "Soliz");
+        Alumno alumnoEma = new Alumno("RaulErnestoCruzSoliz", "");
+
+
+        Docente docenteRaul = new Docente("RaulErnestoCruzSoliz","" );
 
         Aula aulaPrimeroA = new Aula();
         aulaPrimeroA.getListaDocente().add(docenteRaul);
         aulaPrimeroA.getListaAlumnos().add(alumnoEma);
-        aulaPrimeroA.getListaAlumnos().add(alumnoJavi);
-        aulaPrimeroA.getListaAlumnos().add(alumnoAriel);
 
 
         Asistencia asistencia = new Asistencia(); //forma de llamar al map.
 
         asistencia.getAsistenciasDocente().put(docenteRaul, true);
         asistencia.getAsistencias().put(alumnoEma, true);
-        asistencia.getAsistencias().put(alumnoJavi, true);
-        asistencia.getAsistencias().put(alumnoAriel, true);
-        asistencia.getAsistencias().put(alumnoAlfredo, true);
-
 
 
         // Una lista puede ser iterada sencillamente con un for
@@ -56,7 +47,7 @@ public class MainAsistenciasTest{
         }
 
         // Assert que verifica que Aula tenga cuatro alumnos
-        assertThat(aulaPrimeroA.getListaAlumnos().size(), equalTo(3));
+        assertThat(aulaPrimeroA.getListaAlumnos().size(), equalTo(1));
         assertThat(aulaPrimeroA.getListaDocente().size(), equalTo(1));
         Docente docenteResult = aulaPrimeroA.getListaDocente().get(0);
 

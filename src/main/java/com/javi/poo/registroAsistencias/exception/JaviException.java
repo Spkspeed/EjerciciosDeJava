@@ -1,4 +1,4 @@
-package com.javi.poo.registroAsistencias;
+package com.javi.poo.registroAsistencias.exception;
 
 public class JaviException extends Exception{
 

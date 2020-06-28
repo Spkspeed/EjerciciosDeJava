@@ -1,4 +1,6 @@
-package com.javi.poo.registroAsistencias;
+package com.javi.poo.registroAsistencias.model;
+
+import com.javi.poo.registroAsistencias.exception.JaviException;
 
 public class Alumno extends Persona {
 

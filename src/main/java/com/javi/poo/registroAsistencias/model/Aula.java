@@ -1,4 +1,4 @@
-package com.javi.poo.registroAsistencias;
+package com.javi.poo.registroAsistencias.model;
 
 import java.util.ArrayList;
 import java.util.List;

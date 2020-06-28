@@ -1,4 +1,4 @@
-package com.javi.poo.registroAsistencias;
+package com.javi.poo.registroAsistencias.model;
 
 public class Persona {
 

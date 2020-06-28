@@ -1,12 +1,8 @@
-package com.javi.poo.registroAsistencias;
+package com.javi.poo.registroAsistencias.model;
 
 import java.util.HashMap;
 import java.util.Map;
 
-/*
-    ArrayList
-    Hashmap
- */
 public class Asistencia {
 
     // detalle de ingresar el codigo y valor desde la formacion del map.
@@ -19,9 +15,6 @@ public class Asistencia {
     public void setAsistencias(Map<Alumno, Boolean> asistencias) {
         this.asistencias = asistencias;
     }
-
-
-
 
 
     private Map<Docente, Boolean> asistenciasDocente = new HashMap();

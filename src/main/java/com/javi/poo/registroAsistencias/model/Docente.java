@@ -1,10 +1,8 @@
-package com.javi.poo.registroAsistencias;
+package com.javi.poo.registroAsistencias.model;
+
+import com.javi.poo.registroAsistencias.exception.JaviException;
 
 public class Docente extends Persona {
-
-    public Docente() {
-        super();
-    }
 
     public Docente(String nombre, String apellido) throws JaviException { // obliga a que ingrese un nombre y appellido.
         this.setNombre(nombre);

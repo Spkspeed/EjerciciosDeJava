@@ -7,8 +7,6 @@ import com.sun.javafx.css.StyleCache;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringRunner;
-import sun.awt.SunHints;
-
 import java.util.*;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -18,9 +16,12 @@ import static org.hamcrest.core.IsEqual.equalTo;
     Está basada en varias técnicas del sexenio: herencia, cohesión, abstracción, polimorfismo, acoplamiento y encapsulamiento.
 
     Metodo return:
-            Como se devuelve un valor:
-            Como hago para devolver varios valores:
-            En que situaciones se usa un keyword return:
+            Como se devuelve un valor: se puede establecer en un metodo y al llamarlo en otro, donde se tendra que extraer de cierta forma segun lo que se este extrayendo.
+
+            Como hago para devolver varios valores: se los puede juntar en paquetes de informacion utilizando collections como el HashMap o ArrayList
+
+    Interfacez: expanden las posibilidades de uso y formas de trabajar de un metodo (List > ArrayList)
+    Clases Abstractas: es la informacion basica que deben posser dichas clases.
  */
 @RunWith(SpringRunner.class)
 public class MainAsistenciasTest {
@@ -145,19 +146,31 @@ public class MainAsistenciasTest {
 
         Map contenedorLiberador = createDataModel();
 
-        List<Clase>  listaClases = (List)contenedorLiberador.get("aulas");
-        List<Asistencia>  listaAsistencias = (List)contenedorLiberador.get("asistencias");
+        List<Clase> listaClases = (List) contenedorLiberador.get("aulas");
+        List<Asistencia> listaAsistencias = (List) contenedorLiberador.get("asistencias");
 
-        for (Clase clase: listaClases) {
+        for (Clase clase : listaClases) {
             mostrarClaseDetails(clase, clase.getNombreClase());
         }
 
-        for (Asistencia asistencia: listaAsistencias) {
+        for (Asistencia asistencia : listaAsistencias) {
             mostrarDatosDeAsistencias(asistencia, asistencia.getNombreClase());
         }
 
-        Clase clase = listaClases.get(0);
+        Clase clase = new Clase();
+        for(int contador = 0 ; contador < listaClases.size() ; contador++){
+            if (listaClases.get(contador).getNombreClase().equals("PrimeroA")){
+                System.out.println("Primero A esta compuesta por: ");
+                // TODO completar el print de todos los alumnos de la case con un for
+                clase = listaClases.get(contador);
 
+            }else {
+                System.out.println("no tomo esta clase: " + listaClases.get(contador).getNombreClase());
+            }
+
+        }
+
+        //obtenerClasePrimeroA;
         // Assert que verifica que primeroA tenga cuatro alumnos
         assertThat(clase.getListaAlumnos().size(), equalTo(4));
         System.out.println(" ");

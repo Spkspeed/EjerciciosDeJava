@@ -5,7 +5,7 @@ public class Persona {
     protected String nombre;
     protected String apellido;
     private Integer edad;
-    private String nacionalidad;
+    protected String nacionalidad;
     private String genero;
 
     public String getNombre() {
@@ -27,6 +27,8 @@ public class Persona {
     public Integer getEdad() {
         return edad;
     }
+
+    public void setNacionalidad(String nacionalidad){ this.nacionalidad = nacionalidad; }
 
     public String getNacionalidad() {
         return nacionalidad;

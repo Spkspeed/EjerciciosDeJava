@@ -5,6 +5,8 @@ import java.util.Map;
 
 public class Asistencia {
 
+    private String nombreClase;
+
     // detalle de ingresar el codigo y valor desde la formacion del map.
     private Map<Alumno, Boolean> asistencias = new HashMap(); // Cada asistencia debe tener Alumno - Asistencia
 
@@ -16,7 +18,6 @@ public class Asistencia {
         this.asistencias = asistencias;
     }
 
-
     private Map<Docente, Boolean> asistenciasDocente = new HashMap();
 
     public Map<Docente, Boolean> getAsistenciasDocente() {
@@ -27,19 +28,15 @@ public class Asistencia {
         this.asistencias = asistencias;
     }
 
+    private Map<Preceptor, Boolean> asistenciasPreceptor = new HashMap();
 
+    public Map<Preceptor, Boolean> getAsistenciasPreceptor() { return asistenciasPreceptor; }
 
+    public String getNombreClase() {
+        return nombreClase;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
+    public void setNombreClase(String nombreClase) {
+        this.nombreClase = nombreClase;
+    }
 }

@@ -160,9 +160,43 @@ public class MainAsistenciasTest {
         Clase clase = new Clase();
         for(int contador = 0 ; contador < listaClases.size() ; contador++){
             if (listaClases.get(contador).getNombreClase().equals("PrimeroA")){
-                System.out.println("Primero A esta compuesta por: ");
                 // TODO completar el print de todos los alumnos de la case con un for
                 clase = listaClases.get(contador);
+                System.out.println(" ");
+                System.out.println("Primero A esta compuesta por los alumnos: ");
+                for(int i = 0; i < 4; i++){
+                    System.out.println(" ");
+                    System.out.print(listaClases.get(contador).getListaAlumnos().get(i).getNombre());
+                    System.out.print(" ");
+                    System.out.print(listaClases.get(contador).getListaAlumnos().get(i).getApellido());
+                    System.out.print(" ");
+                    System.out.print(listaClases.get(contador).getListaAlumnos().get(i).getNacionalidad());
+                    System.out.println(" ");
+                    System.out.println("-----------------------------------------------------------------");
+                    System.out.println(" ");
+                }
+                System.out.println("Con el docente: ");
+                for(int j = 0; j < 1; j++){
+                    System.out.print(listaClases.get(contador).getListaDocente().get(j).getNombre());
+                    System.out.print(" ");
+                    System.out.print(listaClases.get(contador).getListaDocente().get(j).getApellido());
+                    System.out.print(" ");
+                    System.out.print(listaClases.get(contador).getListaDocente().get(j).getNacionalidad());
+                    System.out.println(" ");
+                    System.out.println("------------------------------------------------------------------");
+                    System.out.println(" ");
+                }
+                System.out.println("Y el preceptor: ");
+                for(int a = 0; a < 1; a++){
+                    System.out.print(listaClases.get(contador).getListPreceptor().get(a).getNombre());
+                    System.out.print(" ");
+                    System.out.print(listaClases.get(contador).getListPreceptor().get(a).getApellido());
+                    System.out.print(" ");
+                    System.out.print(listaClases.get(contador).getListPreceptor().get(a).getNacionalidad());
+                    System.out.println(" ");
+                    System.out.println("-------------------------------------------------------------------");
+                    System.out.println(" ");
+                }
 
             }else {
                 System.out.println("no tomo esta clase: " + listaClases.get(contador).getNombreClase());

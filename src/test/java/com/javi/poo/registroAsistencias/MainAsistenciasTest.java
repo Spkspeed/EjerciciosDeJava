@@ -61,10 +61,10 @@ public class MainAsistenciasTest {
 
         Clase primeroB = new Clase();
         primeroB.setNombreClase("PrimeroB");
-        primeroB.getListaDocente().add(docente2);
         primeroB.getListaAlumnos().add(alumno5);
         primeroB.getListaAlumnos().add(alumno6);
         primeroB.getListaAlumnos().add(alumno7);
+        primeroB.getListaDocente().add(docente2);
         primeroB.getListPreceptor().add(preceptor2);
 
         Asistencia asistencia2 = new Asistencia(); //forma de llamar al map.
@@ -82,10 +82,10 @@ public class MainAsistenciasTest {
 
         Clase primeroC = new Clase();
         primeroC.setNombreClase("PrimeroC");
-        primeroC.getListaDocente().add(docente3);
         primeroC.getListaAlumnos().add(alumno8);
         primeroC.getListaAlumnos().add(alumno9);
         primeroC.getListaAlumnos().add(alumno10);
+        primeroC.getListaDocente().add(docente3);
         primeroC.getListPreceptor().add(preceptor3);
 
         Asistencia asistencia3 = new Asistencia(); //forma de llamar al map.
@@ -106,11 +106,11 @@ public class MainAsistenciasTest {
 
         Clase primeroD = new Clase();
         primeroD.setNombreClase("PrimeroD");
-        primeroD.getListaDocente().add(docente4);
         primeroD.getListaAlumnos().add(alumno11);
         primeroD.getListaAlumnos().add(alumno12);
         primeroD.getListaAlumnos().add(alumno13);
         primeroD.getListaAlumnos().add(alumno14);
+        primeroD.getListaDocente().add(docente4);
         primeroD.getListPreceptor().add(preceptor4);
 
         Asistencia asistencia4 = new Asistencia(); //forma de llamar al map.
@@ -141,6 +141,7 @@ public class MainAsistenciasTest {
         return contenedorDeModelo;
     }
 
+   
     @Test
     public void testAsistenciasHasAlumnosAndDocentesObjects() throws JaviException {
 
@@ -158,13 +159,14 @@ public class MainAsistenciasTest {
         }
 
         Clase clase = new Clase();
-        for(int contador = 0 ; contador < listaClases.size() ; contador++){
-            if (listaClases.get(contador).getNombreClase().equals("PrimeroA")){
+
+        for (int contador = 0; contador < listaClases.size(); contador++) {
+            if (listaClases.get(contador).getNombreClase().equals("PrimeroA")) {
                 // TODO completar el print de todos los alumnos de la case con un for
                 clase = listaClases.get(contador);
-                System.out.println(" ");
+                System.out.println("------------------------------------------------------------------");
                 System.out.println("Primero A esta compuesta por los alumnos: ");
-                for(int i = 0; i < 4; i++){
+                for (int i = 0; i < 4; i++) {
                     System.out.println(" ");
                     System.out.print(listaClases.get(contador).getListaAlumnos().get(i).getNombre());
                     System.out.print(" ");
@@ -172,38 +174,69 @@ public class MainAsistenciasTest {
                     System.out.print(" ");
                     System.out.print(listaClases.get(contador).getListaAlumnos().get(i).getNacionalidad());
                     System.out.println(" ");
-                    System.out.println("-----------------------------------------------------------------");
-                    System.out.println(" ");
                 }
+                System.out.println(" ");
                 System.out.println("Con el docente: ");
-                for(int j = 0; j < 1; j++){
+                for (int j = 0; j < 1; j++) {
                     System.out.print(listaClases.get(contador).getListaDocente().get(j).getNombre());
                     System.out.print(" ");
                     System.out.print(listaClases.get(contador).getListaDocente().get(j).getApellido());
                     System.out.print(" ");
                     System.out.print(listaClases.get(contador).getListaDocente().get(j).getNacionalidad());
                     System.out.println(" ");
-                    System.out.println("------------------------------------------------------------------");
-                    System.out.println(" ");
                 }
+                System.out.println(" ");
                 System.out.println("Y el preceptor: ");
-                for(int a = 0; a < 1; a++){
+                for (int a = 0; a < 1; a++) {
                     System.out.print(listaClases.get(contador).getListPreceptor().get(a).getNombre());
                     System.out.print(" ");
                     System.out.print(listaClases.get(contador).getListPreceptor().get(a).getApellido());
                     System.out.print(" ");
                     System.out.print(listaClases.get(contador).getListPreceptor().get(a).getNacionalidad());
                     System.out.println(" ");
-                    System.out.println("-------------------------------------------------------------------");
-                    System.out.println(" ");
                 }
-
-            }else {
-                System.out.println("no tomo esta clase: " + listaClases.get(contador).getNombreClase());
+            } else if(listaClases.get(contador).getNombreClase().equals("PrimeroB")) {
+                System.out.println("------------------------------------------------------------------");
+                System.out.println("Primero B esta compuesto por los alumnos: ");
+                for (int b1 = 0; b1 < 3; b1++) {
+                    System.out.println(" ");
+                    System.out.print(listaClases.get(contador).getListaAlumnos().get(b1).getNombre());
+                    System.out.print(" ");
+                    System.out.print(listaClases.get(contador).getListaAlumnos().get(b1).getApellido());
+                    System.out.print(" ");
+                    System.out.print(listaClases.get(contador).getListaAlumnos().get(b1).getNacionalidad());
+                    System.out.println("");
+                }
+                System.out.println(" ");
+                System.out.println("Con el docente: ");
+                for(int b2 = 0; b2 < 1; b2++){
+                    System.out.print(listaClases.get(contador).getListaDocente().get(b2).getNombre());
+                    System.out.print(" ");
+                    System.out.print(listaClases.get(contador).getListaDocente().get(b2).getApellido());
+                    System.out.print(" ");
+                    System.out.print(listaClases.get(contador).getListaDocente().get(b2).getNacionalidad());
+                    System.out.println("");
+                }
+                System.out.println(" ");
+                System.out.println("Y el preceptor: ");
+                for(int b3 = 0; b3 < 1; b3++){
+                    System.out.print(listaClases.get(contador).getListPreceptor().get(b3).getNombre());
+                    System.out.print(" ");
+                    System.out.print(listaClases.get(contador).getListPreceptor().get(b3).getApellido());
+                    System.out.print(" ");
+                    System.out.print(listaClases.get(contador).getListPreceptor().get(b3).getNacionalidad());
+                    System.out.println("");
+                }
+            } else {
+                System.out.println("------------------------------------------------------------------");
+                System.out.println("Faltaron las clases: " + listaClases.get(contador).getNombreClase());
             }
+            
 
         }
 
+        nacionalidadesAlumno(1);
+        
         //obtenerClasePrimeroA;
         // Assert que verifica que primeroA tenga cuatro alumnos
         assertThat(clase.getListaAlumnos().size(), equalTo(4));
@@ -211,8 +244,31 @@ public class MainAsistenciasTest {
         assertThat(clase.getListaDocente().size(), equalTo(1));
         System.out.println(" ");
     }
-
-
+    
+    private void nacionalidadesAlumno(int opcion) throws JaviException{
+        Map contenedorLiberador = createDataModel();
+        List<Clase> listaClases = (List) contenedorLiberador.get("aulas");
+        List listaNacionalidad = new ArrayList();
+        String nacionalidad = "";
+        String nacionalidadAnterior = "";
+        for(int i = 0; i < listaClases.size(); i++){
+            System.out.println("Comenzando metodo de nacionalidades:" + opcion);
+            opcion++;
+            //la lista clases posee 4 clases pero sigue contandouna 5
+            for(int contador = 0; contador < listaClases.get(i).getListaAlumnos().size(); contador++){
+                nacionalidad = listaClases.get(i).getListaAlumnos().get(contador).getNacionalidad();
+                listaNacionalidad.add(nacionalidad);
+            }
+        }
+        for(int comparacion = 0; comparacion < listaNacionalidad.size(); comparacion++){
+            
+    }
+        
+    }
+/*
+    tengo que buscar una forma en la que tome obtenga cada tipo de nacionalidad
+    y guardarlas por separado sin se vuelvan a repetir.
+    */
     @Test
     public void testDocenteNameOnlyAllowsTenCharacters() throws Exception {
         try {
@@ -247,7 +303,6 @@ public class MainAsistenciasTest {
         }
 
     }
-
     private void mostrarDatosDeAsistencias(Asistencia asistencia, String primero) {
         // Un mapa primero debe obtenerse un iterador y luego se lo podra leer
         for (Map.Entry<Alumno, Boolean> entry : asistencia.getAsistencias().entrySet()) {

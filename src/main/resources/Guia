@@ -1,0 +1,131 @@
+
+
+Un programa de asistencia de turnos
+	Alumnos para turno mañana, tarde y noche
+-----------------------------------------------------
+- Todos los dias
+- Un aula con 30 alumnos
+	- Nombre y apellido
+
+Lista con Aulas
+	- Aula -> tengo un listado de alumnos
+
+Lista de ausiencias y presencias
+	- Por cada alumnno por cada dia
+
+
+Para el turno Mañana
+Hacer una sola aula con 5 alumnos
+Hacer un listado de ausencias y presencias por cada mes
+-----------------------------------------------------
+Alumnos(1000) - Docente
+
+AusenciasYPresencias
+
+Turnos(Mañana solamente)
+
+Aula(30) 1A 1B 1C
+
+	Alumno
+
+	Aula(30 Alumnos)
+	ListaAusenciaPresencia de 30 alumnos por un dia
+	TurnoMañana
+-----------------------------------------------------
+
+Crear modelo Preceptor que complemente el aula
+
+Crear 4 Aula1 - 20 Alumnos
+Aula2 - 20 Alumnos
+Aula3 - 30 Alumnos
+Aula4 - 25 Alumnos
+
+1.- Renombrar entidad Aula a Entidad Clase (Cambio fisico por abstracto)
+2.- Agregar entidad Preceptor y asignarlo a cada Clase
+3.- Crear 4 Clases con alumnos docente y preceptor
+
+4.- Clase -> Crear metodo obtener alumnos mostrar distintas nacionalidades
+5.- Crear metodo mostrar cuantos diferentes nacionalidades hay
+
+Polimorfismo POO -> Nos permite convertir el comportamiento de un objeto a los que nos convenga
+Composicion(Cuando se arma un conjunto de objetos para tener un objeto completo funcional)
+
+Clases Abstractas		Clases		Interfaz				Problema
+(sensor infra)			TV			Control Remoto			TV
+(slot pilas)			AIREACONDI							AIRE ACONDICINADO
+(botones)				REPRODMUSI							REPRODUCTOR DE MUSICA´
+(lucecita)				PUERTAGARA							PUERTA GARAGE DEL AUTO
+
+ArrayList
+X
+X
+X
+X
+X
+
+Matriz
+X	X	X	X	X
+X	X	X	X	X
+X	X	X	X	X
+
+HashMap
+Key						Value
+String(Asistencia)		Asistencia
+String(Clase)			Clase
+
+Map
+	HashMap
+	Treem..
+
+1.- Crear metodo obtener alumnos mostrar distintas nacionalidades
+	4 Argentina
+	5 Peru
+	10 Bolivia
+
+
+Crear metodo mostrar cuantos diferentes nacionalidades hay
+	Argentina
+	Bolivia
+	Peru
+	Uruguay
+
+
+1.-
+	for (4 Clases)
+		for each Alumno get Nacionalidad
+			Contador por cada nacionalidad
+			Verificador que recuerde las nacionalidades existentes
+
+				X Cantidad de alumnos
+				X Por cada nacionalidad
+
+				List(X), Map(X,X)
+	 List(X)
+		Nacionalidad Argentino
+		Nacionalidad Argentino
+		Nacionalidad Uruguayo
+		Nacionalidad Argentino
+		Nacionalidad Paraguayo
+		Nacionalidad Argentino
+		Nacionalidad Uruguayo
+		Nacionalidad Uruguayo
+		Nacionalidad Paraguayo
+
+	Map(X, X)
+		X, Nacionalidad Argentino
+		X, Nacionalidad Argentino
+		X, Nacionalidad Paraguayo
+		X, Nacionalidad Argentino
+		X, Nacionalidad Uruguayo
+		X, Nacionalidad Uruguayo
+		X, Nacionalidad Paraguayo
+
+	Map(Key, Value)
+	Map(Argentino, 3)
+	Map(Uruguayo, 3)
+	Map(Peru, 1)
+	Map()
+
+Nacionalidad = String("Peru") -> String ("argentino")
+Map.get("Argentino") -> Value Integer(1)
+Map.put("Argentino") -> Value Integer + 1;

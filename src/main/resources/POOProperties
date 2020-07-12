@@ -1,0 +1,11 @@
+
+
+Clase abstracta: Codigo en comun para diferentes implementaciones de objetos, solo puede ser heredada una vez
+    Y sus metodos pueden overrideados(modificados)
+    Es la informacion basica comun que deben posser dichas clases.
+
+Interfaz: Es adaptador que no permite tener codigo, solamente metodos vacios que filtran las funcionalidades mas
+    importantes de una clase implementada
+    Expanden las posibilidades de uso y formas de trabajar de un metodo (List > ArrayList)
+
+Enum: Es una clase basica que permite crear enumadores

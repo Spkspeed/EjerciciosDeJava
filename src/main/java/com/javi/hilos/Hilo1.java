@@ -32,6 +32,11 @@ public class Hilo1 extends Thread {
         holaMundo(this.getName());
     }
 
+    /*
+        Synchronized: se lo utiliza para aquellos procesos que requieren un manejo controlado de hilos entrando por cola
+        como consecuencia esto reduce la eficiencia del proceso
+
+     */
     private static synchronized void holaMundo(String nroThread) {
         System.out.println("Hola soy el hilo " + nroThread);
         // throw new Exception("Error se pudrio todo");

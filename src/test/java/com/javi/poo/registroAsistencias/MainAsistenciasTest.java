@@ -2,11 +2,11 @@ package com.javi.poo.registroAsistencias;
 
 import com.javi.poo.registroAsistencias.exception.JaviException;
 import com.javi.poo.registroAsistencias.model.*;
-import com.sun.javafx.collections.MappingChange;
-import com.sun.javafx.css.StyleCache;
+import com.javi.poo.registroAsistencias.services.AlumnoService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringRunner;
+
 import java.util.*;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -19,12 +19,11 @@ import static org.hamcrest.core.IsEqual.equalTo;
             Como se devuelve un valor: se puede establecer en un metodo y al llamarlo en otro, donde se tendra que extraer de cierta forma segun lo que se este extrayendo.
 
             Como hago para devolver varios valores: se los puede juntar en paquetes de informacion utilizando collections como el HashMap o ArrayList
-
-    Interfacez: expanden las posibilidades de uso y formas de trabajar de un metodo (List > ArrayList)
-    Clases Abstractas: es la informacion basica que deben posser dichas clases.
  */
 @RunWith(SpringRunner.class)
 public class MainAsistenciasTest {
+
+    AlumnoService alumnoService = new AlumnoService();
 
     private Map createDataModel() throws JaviException {
         Alumno alumno1 = new Alumno("Emanuel", "Soliz", "Argentino");
@@ -53,7 +52,7 @@ public class MainAsistenciasTest {
         asistencia.getAsistencias().put(alumno4, true);
         asistencia.getAsistenciasPreceptor().put(preceptor1, true);
 
-        Alumno alumno5 = new Alumno("Alfonso", "Piedras", "España");
+        Alumno alumno5 = new Alumno("Alfonso", "Piedras", "Español");
         Alumno alumno6 = new Alumno("Santiago", "Mendez", "Argentino");
         Alumno alumno7 = new Alumno("Diego", "Mendez", "Argentino");
         Docente docente2 = new Docente("Martina", "Cruñez", "Argentino");
@@ -141,7 +140,7 @@ public class MainAsistenciasTest {
         return contenedorDeModelo;
     }
 
-   
+
     @Test
     public void testAsistenciasHasAlumnosAndDocentesObjects() throws JaviException {
 
@@ -162,7 +161,6 @@ public class MainAsistenciasTest {
 
         for (int contador = 0; contador < listaClases.size(); contador++) {
             if (listaClases.get(contador).getNombreClase().equals("PrimeroA")) {
-                // TODO completar el print de todos los alumnos de la case con un for
                 clase = listaClases.get(contador);
                 System.out.println("------------------------------------------------------------------");
                 System.out.println("Primero A esta compuesta por los alumnos: ");
@@ -195,7 +193,7 @@ public class MainAsistenciasTest {
                     System.out.print(listaClases.get(contador).getListPreceptor().get(a).getNacionalidad());
                     System.out.println(" ");
                 }
-            } else if(listaClases.get(contador).getNombreClase().equals("PrimeroB")) {
+            } else if (listaClases.get(contador).getNombreClase().equals("PrimeroB")) {
                 System.out.println("------------------------------------------------------------------");
                 System.out.println("Primero B esta compuesto por los alumnos: ");
                 for (int b1 = 0; b1 < 3; b1++) {
@@ -209,7 +207,7 @@ public class MainAsistenciasTest {
                 }
                 System.out.println(" ");
                 System.out.println("Con el docente: ");
-                for(int b2 = 0; b2 < 1; b2++){
+                for (int b2 = 0; b2 < 1; b2++) {
                     System.out.print(listaClases.get(contador).getListaDocente().get(b2).getNombre());
                     System.out.print(" ");
                     System.out.print(listaClases.get(contador).getListaDocente().get(b2).getApellido());
@@ -219,7 +217,7 @@ public class MainAsistenciasTest {
                 }
                 System.out.println(" ");
                 System.out.println("Y el preceptor: ");
-                for(int b3 = 0; b3 < 1; b3++){
+                for (int b3 = 0; b3 < 1; b3++) {
                     System.out.print(listaClases.get(contador).getListPreceptor().get(b3).getNombre());
                     System.out.print(" ");
                     System.out.print(listaClases.get(contador).getListPreceptor().get(b3).getApellido());
@@ -231,12 +229,16 @@ public class MainAsistenciasTest {
                 System.out.println("------------------------------------------------------------------");
                 System.out.println("Faltaron las clases: " + listaClases.get(contador).getNombreClase());
             }
-            
+
 
         }
 
-        nacionalidadesAlumno(1);
-        
+        System.out.println("---------------------------------------------------------------------");
+        alumnoService.nacionalidadesAlumno(1, createDataModel());
+        System.out.println(" ");
+        System.out.println("--------------------getNacionalidadesDistintas ----------------------");
+        alumnoService.getNacionalidadesDistintas(createDataModel());
+
         //obtenerClasePrimeroA;
         // Assert que verifica que primeroA tenga cuatro alumnos
         assertThat(clase.getListaAlumnos().size(), equalTo(4));
@@ -244,31 +246,11 @@ public class MainAsistenciasTest {
         assertThat(clase.getListaDocente().size(), equalTo(1));
         System.out.println(" ");
     }
-    
-    private void nacionalidadesAlumno(int opcion) throws JaviException{
-        Map contenedorLiberador = createDataModel();
-        List<Clase> listaClases = (List) contenedorLiberador.get("aulas");
-        List listaNacionalidad = new ArrayList();
-        String nacionalidad = "";
-        String nacionalidadAnterior = "";
-        for(int i = 0; i < listaClases.size(); i++){
-            System.out.println("Comenzando metodo de nacionalidades:" + opcion);
-            opcion++;
-            //la lista clases posee 4 clases pero sigue contandouna 5
-            for(int contador = 0; contador < listaClases.get(i).getListaAlumnos().size(); contador++){
-                nacionalidad = listaClases.get(i).getListaAlumnos().get(contador).getNacionalidad();
-                listaNacionalidad.add(nacionalidad);
-            }
-        }
-        for(int comparacion = 0; comparacion < listaNacionalidad.size(); comparacion++){
-            
-    }
-        
-    }
-/*
-    tengo que buscar una forma en la que tome obtenga cada tipo de nacionalidad
-    y guardarlas por separado sin se vuelvan a repetir.
-    */
+
+    /*
+        tengo que buscar una forma en la que tome obtenga cada tipo de nacionalidad
+        y guardarlas por separado sin se vuelvan a repetir.
+        */
     @Test
     public void testDocenteNameOnlyAllowsTenCharacters() throws Exception {
         try {
@@ -303,6 +285,7 @@ public class MainAsistenciasTest {
         }
 
     }
+
     private void mostrarDatosDeAsistencias(Asistencia asistencia, String primero) {
         // Un mapa primero debe obtenerse un iterador y luego se lo podra leer
         for (Map.Entry<Alumno, Boolean> entry : asistencia.getAsistencias().entrySet()) {

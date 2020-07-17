@@ -40,7 +40,7 @@ public class MainAsistenciasTest {
         primeroA.getListaAlumnos().add(alumno3);
         primeroA.getListaAlumnos().add(alumno4);
         primeroA.getListaDocente().add(docente1);
-        primeroA.getListPreceptor().add(preceptor1);
+        primeroA.getListaPreceptor().add(preceptor1);
 
         Asistencia asistencia = new Asistencia(); //forma de llamar al map.
 
@@ -64,7 +64,7 @@ public class MainAsistenciasTest {
         primeroB.getListaAlumnos().add(alumno6);
         primeroB.getListaAlumnos().add(alumno7);
         primeroB.getListaDocente().add(docente2);
-        primeroB.getListPreceptor().add(preceptor2);
+        primeroB.getListaPreceptor().add(preceptor2);
 
         Asistencia asistencia2 = new Asistencia(); //forma de llamar al map.
 
@@ -85,7 +85,7 @@ public class MainAsistenciasTest {
         primeroC.getListaAlumnos().add(alumno9);
         primeroC.getListaAlumnos().add(alumno10);
         primeroC.getListaDocente().add(docente3);
-        primeroC.getListPreceptor().add(preceptor3);
+        primeroC.getListaPreceptor().add(preceptor3);
 
         Asistencia asistencia3 = new Asistencia(); //forma de llamar al map.
 
@@ -110,7 +110,7 @@ public class MainAsistenciasTest {
         primeroD.getListaAlumnos().add(alumno13);
         primeroD.getListaAlumnos().add(alumno14);
         primeroD.getListaDocente().add(docente4);
-        primeroD.getListPreceptor().add(preceptor4);
+        primeroD.getListaPreceptor().add(preceptor4);
 
         Asistencia asistencia4 = new Asistencia(); //forma de llamar al map.
         asistencia4.setNombreClase("PrimeroD");
@@ -159,83 +159,52 @@ public class MainAsistenciasTest {
 
         Clase clase = new Clase();
 
-        for (int contador = 0; contador < listaClases.size(); contador++) {
-            if (listaClases.get(contador).getNombreClase().equals("PrimeroA")) {
-                clase = listaClases.get(contador);
-                System.out.println("------------------------------------------------------------------");
+        for (Clase contador : listaClases) {
+            if (contador.getNombreClase().equals("PrimeroA")) {
+                clase = contador;
+                System.out.println("------------------------------------------");
                 System.out.println("Primero A esta compuesta por los alumnos: ");
-                for (int i = 0; i < 4; i++) {
-                    System.out.println(" ");
-                    System.out.print(listaClases.get(contador).getListaAlumnos().get(i).getNombre());
-                    System.out.print(" ");
-                    System.out.print(listaClases.get(contador).getListaAlumnos().get(i).getApellido());
-                    System.out.print(" ");
-                    System.out.print(listaClases.get(contador).getListaAlumnos().get(i).getNacionalidad());
-                    System.out.println(" ");
+                for (Alumno alumno : clase.getListaAlumnos()) {
+                    getInformationAlumno(alumno);
                 }
                 System.out.println(" ");
                 System.out.println("Con el docente: ");
-                for (int j = 0; j < 1; j++) {
-                    System.out.print(listaClases.get(contador).getListaDocente().get(j).getNombre());
-                    System.out.print(" ");
-                    System.out.print(listaClases.get(contador).getListaDocente().get(j).getApellido());
-                    System.out.print(" ");
-                    System.out.print(listaClases.get(contador).getListaDocente().get(j).getNacionalidad());
-                    System.out.println(" ");
+                for (Docente docente : clase.getListaDocente()) {
+                    getInformationDocente(docente);
                 }
                 System.out.println(" ");
                 System.out.println("Y el preceptor: ");
-                for (int a = 0; a < 1; a++) {
-                    System.out.print(listaClases.get(contador).getListPreceptor().get(a).getNombre());
-                    System.out.print(" ");
-                    System.out.print(listaClases.get(contador).getListPreceptor().get(a).getApellido());
-                    System.out.print(" ");
-                    System.out.print(listaClases.get(contador).getListPreceptor().get(a).getNacionalidad());
-                    System.out.println(" ");
+                for (Preceptor preceptor : clase.getListaPreceptor()) {
+                    getInformationPreceptor(preceptor);
                 }
-            } else if (listaClases.get(contador).getNombreClase().equals("PrimeroB")) {
-                System.out.println("------------------------------------------------------------------");
+            } else if (contador.getNombreClase().equals("PrimeroB")) {
+                System.out.println("------------------------------------------");
                 System.out.println("Primero B esta compuesto por los alumnos: ");
-                for (int b1 = 0; b1 < 3; b1++) {
-                    System.out.println(" ");
-                    System.out.print(listaClases.get(contador).getListaAlumnos().get(b1).getNombre());
-                    System.out.print(" ");
-                    System.out.print(listaClases.get(contador).getListaAlumnos().get(b1).getApellido());
-                    System.out.print(" ");
-                    System.out.print(listaClases.get(contador).getListaAlumnos().get(b1).getNacionalidad());
-                    System.out.println("");
+                for (Alumno alumno : clase.getListaAlumnos()) {
+                    getInformationAlumno(alumno);
                 }
                 System.out.println(" ");
                 System.out.println("Con el docente: ");
-                for (int b2 = 0; b2 < 1; b2++) {
-                    System.out.print(listaClases.get(contador).getListaDocente().get(b2).getNombre());
-                    System.out.print(" ");
-                    System.out.print(listaClases.get(contador).getListaDocente().get(b2).getApellido());
-                    System.out.print(" ");
-                    System.out.print(listaClases.get(contador).getListaDocente().get(b2).getNacionalidad());
-                    System.out.println("");
+                for (Docente docente : clase.getListaDocente()) {
+                    getInformationDocente(docente);
                 }
                 System.out.println(" ");
                 System.out.println("Y el preceptor: ");
-                for (int b3 = 0; b3 < 1; b3++) {
-                    System.out.print(listaClases.get(contador).getListPreceptor().get(b3).getNombre());
-                    System.out.print(" ");
-                    System.out.print(listaClases.get(contador).getListPreceptor().get(b3).getApellido());
-                    System.out.print(" ");
-                    System.out.print(listaClases.get(contador).getListPreceptor().get(b3).getNacionalidad());
-                    System.out.println("");
+                for (Preceptor preceptor : clase.getListaPreceptor()) {
+                    getInformationPreceptor(preceptor);
                 }
             } else {
-                System.out.println("------------------------------------------------------------------");
-                System.out.println("Faltaron las clases: " + listaClases.get(contador).getNombreClase());
+                System.out.println("------------------------------------------");
+                System.out.println("Faltaron las clases: " + contador.getNombreClase());
             }
 
 
         }
 
-        System.out.println("---------------------------------------------------------------------");
+        System.out.println("--------------------------------------------------");
         alumnoService.nacionalidadesAlumno(1, createDataModel());
         System.out.println(" ");
+        
         System.out.println("--------------------getNacionalidadesDistintas ----------------------");
         alumnoService.getNacionalidadesDistintas(createDataModel());
 
@@ -268,7 +237,33 @@ public class MainAsistenciasTest {
             assertThat(e.getMessage(), equalTo("Error, el nombre del alumno supera los 10 caracteres permitidos"));
         }
     }
-
+    private void getInformationPreceptor(Preceptor preceptor){
+        System.out.println(" ");
+                    System.out.print(preceptor.getNombre());
+                    System.out.print(" ");
+                    System.out.print(preceptor.getApellido());
+                    System.out.print(" ");
+                    System.out.print(preceptor.getNacionalidad());
+                    System.out.println(" ");
+    }
+    private void getInformationDocente(Docente docente){
+        System.out.println(" ");
+                    System.out.print(docente.getNombre());
+                    System.out.print(" ");
+                    System.out.print(docente.getApellido());
+                    System.out.print(" ");
+                    System.out.print(docente.getNacionalidad());
+                    System.out.println(" ");
+    }
+    private void getInformationAlumno(Alumno alumno){
+        System.out.println(" ");
+                    System.out.print(alumno.getNombre());
+                    System.out.print(" ");
+                    System.out.print(alumno.getApellido());
+                    System.out.print(" ");
+                    System.out.print(alumno.getNacionalidad());
+                    System.out.println(" ");
+    }
     private void mostrarClaseDetails(Clase clase, String primero) {
         // Una lista puede ser iterada sencillamente con un for
         for (Alumno alumno : clase.getListaAlumnos()) {
@@ -280,7 +275,7 @@ public class MainAsistenciasTest {
             System.out.println("El docente de " + primero + " es: " + docente.getNombre() + " " + docente.getApellido() + " " + docente.getNacionalidad());
         }
 
-        for (Preceptor preceptor : clase.getListPreceptor()) {
+        for (Preceptor preceptor : clase.getListaPreceptor()) {
             System.out.println("El preceptor de " + primero + " es: " + preceptor.getNombre() + " " + preceptor.getApellido() + " " + preceptor.getNacionalidad());
         }
 

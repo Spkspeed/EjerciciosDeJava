@@ -9,7 +9,7 @@ public class Clase {
 
     private List<Alumno> listaAlumnos = new ArrayList();
     private List<Docente> listaDocente = new ArrayList();
-    private List<Preceptor> listPreceptor = new ArrayList<>();
+    private List<Preceptor> listaPreceptor = new ArrayList<>();
 
     public List<Alumno> getListaAlumnos() {
         return listaAlumnos;
@@ -18,8 +18,8 @@ public class Clase {
         return listaDocente;
     }
 
-    public List<Preceptor> getListPreceptor() {
-        return listPreceptor;
+    public List<Preceptor> getListaPreceptor() {
+        return listaPreceptor;
     }
 
     public String getNombreClase() {

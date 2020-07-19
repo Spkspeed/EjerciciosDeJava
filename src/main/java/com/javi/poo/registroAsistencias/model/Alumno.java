@@ -11,6 +11,7 @@ public class Alumno extends Persona {
         this.setApellido(apellido);
         this.setNacionalidad(nacionalidad);
 
+
         if (nombre.length() >= 10){
                 throw new JaviException("el nombre del alumno supera los 10 caracteres permitidos");
         }

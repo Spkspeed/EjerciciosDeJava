@@ -28,6 +28,14 @@ public class Persona {
         return edad;
     }
 
+    public void setEdad(Integer edad) {
+        this.edad = edad;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
     public void setNacionalidad(String nacionalidad){ this.nacionalidad = nacionalidad; }
 
     public String getNacionalidad() {

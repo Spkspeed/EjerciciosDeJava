@@ -4,6 +4,8 @@ import com.javi.poo.registroAsistencias.exception.JaviException;
 
 public class Alumno extends Persona {
 
+    public Alumno() {}
+
     // Los constructores siempre deben ser publicos
     // Salvo que quieras implementar un patron de diseño que seria un SINGLETON
     public Alumno(String nombre, String apellido, String nacionalidad) throws JaviException { // obliga a que ingrese un nombre y appellido.
@@ -17,4 +19,7 @@ public class Alumno extends Persona {
         }
     }
 
+    public void imprimirAlumno() {
+        System.out.println("Soy el alumno: " + this.getNombre() + " con apellido " + this.getApellido() + " y nacionalidad: " + this.getNacionalidad() + this.getEdad());
+    }
 }

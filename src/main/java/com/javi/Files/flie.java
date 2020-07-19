@@ -1,5 +1,8 @@
 package com.javi.Files;
-
+/*
+clase abstracta, mezcla, archivos con fliereader.
+ */
+import com.javi.poo.registroAsistencias.exception.JaviException;
 import com.javi.poo.registroAsistencias.model.Alumno;
 
 import java.io.FileNotFoundException;
@@ -7,46 +10,65 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class flie {
-    public static void main(String args[]) {
+    public static void main(String args[]) throws JaviException{
         leer_Fichero inicio = new leer_Fichero();
         inicio.leer();
     }
 }
 
 class leer_Fichero {
-    public void leer() {
-        int incrementador = 1;
+    public void leer() throws JaviException {
+
         FileReader entrada = null;
-        int A1 = 0, A2 = 0, A3, A4, B1, B2, B3, B4;
-        int num_caracteres = 0;
+        int A2 = 0;
         int aumentar = 0;
         String confirmacion = "";
-        
+        int contador = 0;
+
         try {
             entrada = new FileReader("C:\\Users\\recruz\\IdeaProjects\\EjerciciosDeJava\\src\\test\\resources\\ClasesModel.data");
-            int c = 0;
+            int currentCharacter = 0;
+            Alumno alumno = new Alumno();
 
-            while (c != -1) {
+            while (currentCharacter != -1) {
                 String acumulacion = "";
                 while (A2 == 0) {
-                    c = entrada.read();
-                    char variable = (char) c;
+                    currentCharacter = entrada.read();
+                    char variable = (char) currentCharacter;
                     acumulacion += variable;
-                    
-                    if (variable == '.') {
+                    if(currentCharacter == -1){
                         A2 = 1;
                     }
                 }
                 char palabra[] = new char[acumulacion.length()];
+
                 for(int i = 0; i <= (acumulacion.length() - 1); i++){
                     palabra [aumentar] = acumulacion.charAt(i);
-                    if(acumulacion.charAt(i) == ','){
-                        confirmacion = acumulacion.substring((i - aumentar), i);
-                        System.out.println(confirmacion);
+
+                    if(acumulacion.charAt(i) == ',' || acumulacion.charAt(i) == '.'){
+                        confirmacion = acumulacion.substring((i - aumentar), (i));
+                        contador++;
+                        if(contador == 1){
+                            String clase = confirmacion;
+                        }else if(contador == 2){
+                            alumno.setNombre(confirmacion);
+                        } else if(contador == 3){
+                            alumno.setApellido(confirmacion);
+                        } else if(contador == 4){
+                            alumno.setEdad(Integer.parseInt(confirmacion));
+                        } else if (contador == 5){
+                            alumno.setNacionalidad(confirmacion);
+                        }
+
+                        alumno.imprimirAlumno();
+                        aumentar = -1;
+                    }
+                    if(acumulacion.charAt(i) == '.'){
+                        contador = 0;
+                        System.out.println(" ");
                     }
                     aumentar++;
                 }
-                A2 = 0;
             }
             entrada.close();
         } catch (IOException e) {

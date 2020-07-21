@@ -29,4 +29,6 @@ public class Clase {
     public void setNombreClase(String nombreClase) {
         this.nombreClase = nombreClase;
     }
+    
+    
 }

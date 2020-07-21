@@ -20,6 +20,6 @@ public class Alumno extends Persona {
     }
 
     public void imprimirAlumno() {
-        System.out.println("Soy el alumno: " + this.getNombre() + " con apellido " + this.getApellido() + " y nacionalidad: " + this.getNacionalidad() + this.getEdad());
+        System.out.println("Soy el alumno: " + this.getNombre() + " con apellido " + this.getApellido() + " y nacionalidad: " + this.getNacionalidad() + " con edad de: " + this.getEdad() + " años.");
     }
 }

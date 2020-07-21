@@ -26,7 +26,7 @@ class leer_Fichero {
         int contador = 0;
 
         try {
-            entrada = new FileReader("C:\\Users\\recruz\\IdeaProjects\\EjerciciosDeJava\\src\\test\\resources\\ClasesModel.data");
+            entrada = new FileReader("C:\\Users\\ADMIN\\Documents\\javaimport3\\EjerciciosDeJava\\src\\test\\resources\\ClasesModel.data");
             int currentCharacter = 0;
             Alumno alumno = new Alumno();
 
@@ -59,13 +59,12 @@ class leer_Fichero {
                         } else if (contador == 5){
                             alumno.setNacionalidad(confirmacion);
                         }
-
-                        alumno.imprimirAlumno();
                         aumentar = -1;
                     }
                     if(acumulacion.charAt(i) == '.'){
                         contador = 0;
                         System.out.println(" ");
+                        alumno.imprimirAlumno();
                     }
                     aumentar++;
                 }

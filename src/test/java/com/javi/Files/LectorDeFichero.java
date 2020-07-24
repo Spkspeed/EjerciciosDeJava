@@ -1,8 +1,7 @@
 package com.javi.Files;
 
 import com.javi.poo.registroAsistencias.exception.JaviException;
-import com.javi.poo.registroAsistencias.model.Alumno;
-import com.javi.poo.registroAsistencias.model.Clase;
+import file.AlumnoInformation;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,31 +11,27 @@ public class LectorDeFichero {
     protected List Leer() throws JaviException {
 
         FileReader entrada = null;
-        int A2 = 0;
+        int paseUno = 0;
         int aumentar = 0;
         String confirmacion = "";
         int contador = 0;
-        
         List contenedorAlumnos = new ArrayList();
-        Clase clase1 = new Clase();
-        
-        int incrementador = 0;
-        String nombre = "", apellido = "", nacionalidad = "";
+       
+        String nombre = "", apellido = "", nacionalidad = "", clase = "", preceptor = "";
         int edad = 0;
 
         try {
             entrada = new FileReader("C:\\Users\\ADMIN\\Documents\\javaimport3\\EjerciciosDeJava\\src\\test\\resources\\ClasesModel.data");
             int currentCharacter = 0;
-            Alumno alumno = new Alumno();
-
+            
             while (currentCharacter != -1) {
                 String acumulacion = "";
-                while (A2 == 0) {
+                while (paseUno == 0) {
                     currentCharacter = entrada.read();
                     char variable = (char) currentCharacter;
                     acumulacion += variable;
                     if(currentCharacter == -1){
-                        A2 = 1;
+                        paseUno = 1;
                     }
                 }
                 char palabra[] = new char[acumulacion.length()];
@@ -49,7 +44,7 @@ public class LectorDeFichero {
                         contador++;
                         switch (contador) {
                             case 1:
-                                String clase = confirmacion;
+                                clase = confirmacion;
                                 break;
                             case 2:
                                 nombre = confirmacion;
@@ -63,6 +58,9 @@ public class LectorDeFichero {
                             case 5:
                                 nacionalidad = confirmacion;
                                 break;
+                            case 6:
+                                preceptor = confirmacion;
+                                break;
                             default:
                                 break;
                         }
@@ -73,12 +71,15 @@ public class LectorDeFichero {
                         i++;
                         i++;
                         
+                        AlumnoInformation alumno = new AlumnoInformation(nombre, apellido, edad, nacionalidad);
+                        
                         alumno.setNombre(nombre);
                         alumno.setApellido(apellido);
+                        alumno.setEdad(edad);
                         alumno.setNacionalidad(nacionalidad);
                         
-                        Alumno alumno1 = new Alumno(nombre, apellido, nacionalidad);
-                        contenedorAlumnos.add(alumno1);
+                        contenedorAlumnos.add(alumno);
+                           
                     }
                     aumentar++;
                 }

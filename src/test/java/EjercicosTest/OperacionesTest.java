@@ -1,5 +1,6 @@
-package com.javi.algortimos;
+package EjercicosTest;
 
+import com.javi.algortimos.Ejercicio2;
 import com.javi.algortimos.Ejercicio2;
 import org.junit.Test;
 import org.junit.runner.RunWith;

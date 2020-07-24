@@ -1,6 +1,7 @@
 package com.javi.poo.registroAsistencias.model;
 
 import com.javi.poo.registroAsistencias.exception.JaviException;
+import java.util.List;
 
 public class Alumno extends Persona {
 
@@ -17,12 +18,5 @@ public class Alumno extends Persona {
         if (nombre.length() >= 10){
                 throw new JaviException("el nombre del alumno supera los 10 caracteres permitidos");
         }
-    }
-
-    public void imprimirAlumno(String clase) {
-        System.out.println("Soy un alumno de la " + clase + " y mi nombre es:" +
-                this.getNombre() + " con apellido " + this.getApellido() +
-                " y nacionalidad: " + this.getNacionalidad() +
-                " con edad de: " + this.getEdad() + " años.");
     }
 }

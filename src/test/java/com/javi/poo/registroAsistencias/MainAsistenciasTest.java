@@ -81,7 +81,7 @@ public class MainAsistenciasTest extends BaseTest {
         }
 
         System.out.println("--------------------------------------------------");
-        alumnoService.nacionalidadesAlumno(1, createDataModel());
+        alumnoService.nacionalidadesAlumno(createDataModel());
         System.out.println(" ");
 
         System.out.println("--------------------getNacionalidadesDistintas ----------------------");

@@ -16,11 +16,11 @@ public class AlumnoService {
             incrementador++: realiza la accion de aumentar el valor de un entero en 1
         4.- El value de un map puede ser usado como contador: cada key dentro de un map tiene su propio value, el cual, podemos modificar utilzando la key correcta y un incrementador.
      */
-    public void nacionalidadesAlumno(int opcion, Map contenedorLiberador) throws JaviException {
+    public void nacionalidadesAlumno(Map contenedorLiberador) throws JaviException {
         List<Clase> listaClases = (List) contenedorLiberador.get("aulas");
         String nacionalidad;
         Map nacionalidades = new HashMap();
-
+        int opcion = 1;
         for (Clase clase : listaClases) {
             System.out.println("Comenzando metodo de nacionalidades:" + opcion);
             opcion++;

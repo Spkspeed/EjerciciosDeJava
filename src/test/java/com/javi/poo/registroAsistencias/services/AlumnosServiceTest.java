@@ -111,7 +111,7 @@ public class MainAsistenciasTest extends BaseTest {
     @Test
     public void testAlumnoNameOnlyAllowsTenCharacters() throws Exception {
         try {
-            new Alumno("DSDSAURLAURAURLAUR", "Soliz", "Argentino");
+            new Alumno("Clase1","DSDSAURLAURAURLAUR", "Soliz", "Argentino",22);
         } catch (JaviException e) {
             assertThat(e.getMessage(), equalTo("Error, el nombre del alumno supera los 10 caracteres permitidos"));
         }

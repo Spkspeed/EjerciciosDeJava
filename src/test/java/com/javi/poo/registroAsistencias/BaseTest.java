@@ -11,10 +11,10 @@ import java.util.Map;
 public abstract class BaseTest {
 
     protected Map createDataModel() throws JaviException {
-        Alumno alumno1 = new Alumno("Emanuel", "Soliz", "Argentino");
-        Alumno alumno2 = new Alumno("Javier", "Soliz", "Argentino");
-        Alumno alumno3 = new Alumno("Ariel", "Jarpa Soliz", "Argentino");
-        Alumno alumno4 = new Alumno("Alfredo", "Villegas", "Argentino");
+        Alumno alumno1 = new Alumno("Clase1","Emanuel", "Soliz", "Argentino", 22);
+        Alumno alumno2 = new Alumno("Clase1","Javier", "Soliz", "Argentino", 21);
+        Alumno alumno3 = new Alumno("Clase1","Ariel", "Jarpa Soliz", "Argentino", 22);
+        Alumno alumno4 = new Alumno("Clase1","Alfredo", "Villegas", "Argentino",32);
         Docente docente1 = new Docente("Raul", "Soliz", "Argentino");
         Preceptor preceptor1 = new Preceptor("Marcos", "Tineli", "argentino");
 
@@ -37,9 +37,9 @@ public abstract class BaseTest {
         asistencia.getAsistencias().put(alumno4, true);
         asistencia.getAsistenciasPreceptor().put(preceptor1, true);
 
-        Alumno alumno5 = new Alumno("Alfonso", "Piedras", "Español");
-        Alumno alumno6 = new Alumno("Santiago", "Mendez", "Argentino");
-        Alumno alumno7 = new Alumno("Diego", "Mendez", "Argentino");
+        Alumno alumno5 = new Alumno("Clase2","Alfonso", "Piedras", "Español",18);
+        Alumno alumno6 = new Alumno("Clase2","Santiago", "Mendez", "Argentino", 39);
+        Alumno alumno7 = new Alumno("Clase2","Diego", "Mendez", "Argentino",27);
         Docente docente2 = new Docente("Martina", "Cruñez", "Argentino");
         Preceptor preceptor2 = new Preceptor("Patricio", "notengoidea", "Argentino");
 
@@ -58,9 +58,9 @@ public abstract class BaseTest {
         asistencia2.getAsistencias().put(alumno5, true);
         asistencia2.getAsistenciasPreceptor().put(preceptor2, true);
 
-        Alumno alumno8 = new Alumno("Bruno", "Galeano", "Bolivia");
-        Alumno alumno9 = new Alumno("Alcides", "Galvan", "Argentino");
-        Alumno alumno10 = new Alumno("Mauricio", "Piedras", "Peru");
+        Alumno alumno8 = new Alumno("Clase3","Bruno", "Galeano", "Bolivia",20);
+        Alumno alumno9 = new Alumno("Clase3","Alcides", "Galvan", "Argentino",19);
+        Alumno alumno10 = new Alumno("Clase3","Mauricio", "Piedras", "Peru",45);
         Docente docente3 = new Docente("Analia", "Montes", "Argentino");
         Preceptor preceptor3 = new Preceptor("Natalia", "Jimenez", "Argentino");
 
@@ -81,10 +81,10 @@ public abstract class BaseTest {
         asistencia3.getAsistencias().put(alumno10, true);
         asistencia3.getAsistenciasPreceptor().put(preceptor3, true);
 
-        Alumno alumno11 = new Alumno("Pablo", "Toledo", "Argentino");
-        Alumno alumno12 = new Alumno("Martin", "Turina", "Venezuela");
-        Alumno alumno13 = new Alumno("Manolo", "Galvan", "Español");
-        Alumno alumno14 = new Alumno("Arturo", "Illia", "Argentino");
+        Alumno alumno11 = new Alumno("Clase4","Pablo", "Toledo", "Argentino",43);
+        Alumno alumno12 = new Alumno("Clase4","Martin", "Turina", "Venezuela",42);
+        Alumno alumno13 = new Alumno("Clase4","Manolo", "Galvan", "Español",25);
+        Alumno alumno14 = new Alumno("Clase4","Arturo", "Illia", "Argentino",33);
         Docente docente4 = new Docente("Catarina", "Claus", "Britanica");
         Preceptor preceptor4 = new Preceptor("Maria", "Antonieta", "Francesa");
 

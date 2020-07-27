@@ -1,5 +1,6 @@
-package com.javi.poo.registroAsistencias;
+package com.javi.poo.registroAsistencias.services;
 
+import com.javi.poo.registroAsistencias.BaseTest;
 import com.javi.poo.registroAsistencias.exception.JaviException;
 import com.javi.poo.registroAsistencias.model.*;
 import com.javi.poo.registroAsistencias.services.AlumnoService;
@@ -20,7 +21,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
             Como hago para devolver varios valores: se los puede juntar en paquetes de informacion utilizando collections como el HashMap o ArrayList
  */
 @RunWith(SpringRunner.class)
-public class MainAsistenciasTest extends BaseTest {
+public class AlumnosServiceTest extends BaseTest {
 
     AlumnoService alumnoService = new AlumnoService();
 

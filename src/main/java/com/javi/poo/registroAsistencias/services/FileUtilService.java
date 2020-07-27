@@ -1,4 +1,4 @@
-package com.javi.Files;
+package com.javi.poo.registroAsistencias.services;
 
 import com.javi.poo.registroAsistencias.exception.JaviException;
 import com.javi.poo.registroAsistencias.model.Alumno;
@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class LectorDeFichero {
+public class FileUtilService {
 
     /*
     Accedes al archivo

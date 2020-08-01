@@ -55,10 +55,7 @@ public class AlumnosServiceTest extends BaseTest {
                     getInformationDocente(docente);
                 }
                 System.out.println(" ");
-                System.out.println("Y el preceptor: ");
-                for (Preceptor preceptor : clase.getListaPreceptor()) {
-                    getInformationPreceptor(preceptor);
-                }
+                System.out.println("Y el preceptor: " + clase.getPreceptor().getNombre() + " " + clase.getPreceptor().getApellido());
             } else if (contador.getNombreClase().equals("PrimeroB")) {
                 System.out.println("------------------------------------------");
                 System.out.println("Primero B esta compuesto por los alumnos: ");
@@ -71,10 +68,7 @@ public class AlumnosServiceTest extends BaseTest {
                     getInformationDocente(docente);
                 }
                 System.out.println(" ");
-                System.out.println("Y el preceptor: ");
-                for (Preceptor preceptor : clase.getListaPreceptor()) {
-                    getInformationPreceptor(preceptor);
-                }
+                System.out.println("Y el preceptor: " + clase.getPreceptor().getNombre());
             } else {
                 System.out.println("------------------------------------------");
                 System.out.println("Faltaron las clases: " + contador.getNombreClase());
@@ -154,11 +148,7 @@ public class AlumnosServiceTest extends BaseTest {
         for (Docente docente : clase.getListaDocente()) {
             System.out.println("El docente de " + primero + " es: " + docente.getNombre() + " " + docente.getApellido() + " " + docente.getNacionalidad());
         }
-
-        for (Preceptor preceptor : clase.getListaPreceptor()) {
-            System.out.println("El preceptor de " + primero + " es: " + preceptor.getNombre() + " " + preceptor.getApellido() + " " + preceptor.getNacionalidad());
-        }
-
+        System.out.println("El preceptor de " + primero + " es: " + clase.getPreceptor().getNombre() + " " + clase.getPreceptor().getApellido());
     }
 
     private void mostrarDatosDeAsistencias(Asistencia asistencia, String primero) {

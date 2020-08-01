@@ -25,7 +25,7 @@ public abstract class BaseTest {
         primeroA.getListaAlumnos().add(alumno3);
         primeroA.getListaAlumnos().add(alumno4);
         primeroA.getListaDocente().add(docente1);
-        primeroA.getListaPreceptor().add(preceptor1);
+        primeroA.setPreceptor(preceptor1);
 
         Asistencia asistencia = new Asistencia(); //forma de llamar al map.
 
@@ -49,7 +49,7 @@ public abstract class BaseTest {
         primeroB.getListaAlumnos().add(alumno6);
         primeroB.getListaAlumnos().add(alumno7);
         primeroB.getListaDocente().add(docente2);
-        primeroB.getListaPreceptor().add(preceptor2);
+        primeroB.setPreceptor(preceptor2);
 
         Asistencia asistencia2 = new Asistencia(); //forma de llamar al map.
 
@@ -70,10 +70,9 @@ public abstract class BaseTest {
         primeroC.getListaAlumnos().add(alumno9);
         primeroC.getListaAlumnos().add(alumno10);
         primeroC.getListaDocente().add(docente3);
-        primeroC.getListaPreceptor().add(preceptor3);
+        primeroC.setPreceptor(preceptor3);
 
         Asistencia asistencia3 = new Asistencia(); //forma de llamar al map.
-
         asistencia3.setNombreClase("PrimeroC");
         asistencia3.getAsistenciasDocente().put(docente3, true);
         asistencia3.getAsistencias().put(alumno8, true);
@@ -95,7 +94,7 @@ public abstract class BaseTest {
         primeroD.getListaAlumnos().add(alumno13);
         primeroD.getListaAlumnos().add(alumno14);
         primeroD.getListaDocente().add(docente4);
-        primeroD.getListaPreceptor().add(preceptor4);
+        primeroD.setPreceptor(preceptor4);
 
         Asistencia asistencia4 = new Asistencia(); //forma de llamar al map.
         asistencia4.setNombreClase("PrimeroD");

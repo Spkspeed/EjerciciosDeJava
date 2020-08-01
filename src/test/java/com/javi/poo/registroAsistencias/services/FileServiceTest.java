@@ -5,16 +5,22 @@ import com.javi.poo.registroAsistencias.model.Alumno;
 import java.io.IOException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 import java.util.Map;
 
 @RunWith(SpringRunner.class)
-public class FileServiceTest extends FileUtilService {
+public class FileServiceTest {
+
+    FileUtilService fileUtilService = new FileUtilService();
+
     @Test
     public void testProgramLectorDelFichero() throws JaviException, IOException{
-        Map contenedor = parseFileAlumnos();
+
+        Map contenedor = fileUtilService.parseFileAlumnos(FileofTestResource());
         List <Alumno> listaAlumnos = (List) contenedor.get("ClaseA");
 
         for(Alumno alumno : listaAlumnos){
@@ -26,5 +32,10 @@ public class FileServiceTest extends FileUtilService {
             System.out.println("Edad: " + alumno.getEdad());
             System.out.println("----------------------------------------------");
         }
+    }
+
+    public Resource FileofTestResource(){
+        Resource resource = new ClassPathResource("ClasesModel.data");
+        return resource;
     }
 }

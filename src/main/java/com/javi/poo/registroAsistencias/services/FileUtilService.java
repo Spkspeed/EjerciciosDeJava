@@ -3,10 +3,11 @@ package com.javi.poo.registroAsistencias.services;
 import com.javi.poo.registroAsistencias.exception.JaviException;
 import com.javi.poo.registroAsistencias.model.Alumno;
 import com.javi.poo.registroAsistencias.model.Clase;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,16 +25,18 @@ public class FileUtilService {
     5.- Obtener lista de alumnos
     6.- Crear un metodo que obtenga todos los alumnos por Clase
     */
-    protected Map parseFileAlumnos() throws JaviException, IOException {
+    protected Map parseFileAlumnos(Resource resource) throws JaviException, IOException {
         String sentenceBuffer;
         //tipo de atributo utilizado para llevar a cabo el FileReader
-        FileReader entrada;
+
         Map listaClases = new HashMap();
         //try-cath necesario para atrapar la exception del FileReader
         try {
-            entrada = new FileReader("C:\\Users\\ADMIN\\Documents\\javaimport3\\EjerciciosDeJava\\src\\test\\resources\\ClasesModel.data");
+            InputStream input = resource.getInputStream();
+            InputStreamReader isReader = new InputStreamReader(input, "UTF-8");
             //Tipo de objeto utilizado para leer texto una linea a la vez
-            BufferedReader br = new BufferedReader(entrada);
+            BufferedReader br = new BufferedReader(isReader);
+
             //Condicion de que la oracion obtenida existe
             while ((sentenceBuffer = br.readLine()) != null) {
                 //enviamos la oracion a un metodo, la cual, la procesa y termnina devolviendo un objeto Alumno
@@ -58,7 +61,7 @@ public class FileUtilService {
                 }
             }
             //necesario para dejar de utilizar los archivos llamados en todo el proceso
-            entrada.close();
+            br.close();
         } catch (IOException e) {
             System.out.println("Archivo no encontrado");
         }

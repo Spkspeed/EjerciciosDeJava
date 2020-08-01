@@ -2,7 +2,7 @@ package com.javi.poo.registroAsistencias.services;
 
 import com.javi.poo.registroAsistencias.exception.JaviException;
 import com.javi.poo.registroAsistencias.model.Alumno;
-import com.javi.poo.registroAsistencias.services.FileUtilService;
+import java.io.IOException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -13,8 +13,7 @@ import java.util.Map;
 @RunWith(SpringRunner.class)
 public class FileServiceTest extends FileUtilService {
     @Test
-    public void testProgramLectorDelFichero() throws JaviException{
-
+    public void testProgramLectorDelFichero() throws JaviException, IOException{
         Map contenedor = parseFileAlumnos();
         List <Alumno> listaAlumnos = (List) contenedor.get("ClaseA");
 

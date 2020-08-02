@@ -5,6 +5,7 @@ import com.javi.poo.registroAsistencias.exception.JaviException;
 public class Alumno extends Persona {
 
     private String nombreClase;
+
     public Alumno() {}
 
     // Los constructores siempre deben ser publicos

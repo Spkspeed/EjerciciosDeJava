@@ -6,7 +6,6 @@ import com.javi.poo.registroAsistencias.model.Alumno;
 import java.io.IOException;
 
 import com.javi.poo.registroAsistencias.model.Clase;
-import com.javi.poo.registroAsistencias.model.Preceptor;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.core.io.ClassPathResource;
@@ -23,8 +22,9 @@ public class FileServiceTest {
 
     @Test
     public void testProgramLectorDelFichero() throws JaviException, IOException {
-
-        Map contenedor = fileUtilService.parseFileAlumnos(FileofTestResource());
+        String archivo = "ClasesModel.data";
+        Resource resource = new ClassPathResource(archivo);
+        Map contenedor = fileUtilService.parsearFilePreceptorAndAlumnos(resource,archivo);
         List<Alumno> listaAlumnos = (List) contenedor.get("ClaseA");
 
         for (Alumno alumno : listaAlumnos) {
@@ -40,7 +40,9 @@ public class FileServiceTest {
 
     @Test
     public void testProgramLectorDelFicheroDePreceptores() throws JaviException {
-        Map contenedor = fileUtilService.parsearFilePreceptor(fileOfTestResourceUno());
+        String archivo = "PreceptorModel.data";
+        Resource resource = new ClassPathResource(archivo);
+        Map contenedor = fileUtilService.parsearFilePreceptorAndAlumnos(resource, archivo);
         Clase clase = (Clase) contenedor.get("ClaseD");
             System.out.println("Un preceptor posee la siguiente informacion: ");
             System.out.println("Clase: " + clase.getNombreClase());
@@ -48,15 +50,5 @@ public class FileServiceTest {
             System.out.println("Apellido: " + clase.getPreceptor().getApellido());
             System.out.println("Nacionalidad: " + clase.getPreceptor().getNacionalidad());
             System.out.println("----------------------------------------------");
-    }
-
-    public Resource FileofTestResource() {
-        Resource resource = new ClassPathResource("ClasesModel.data");
-        return resource;
-    }
-
-    public Resource fileOfTestResourceUno() {
-        Resource resource = new ClassPathResource("PreceptorModel.data");
-        return resource;
     }
 }

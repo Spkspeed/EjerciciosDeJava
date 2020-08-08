@@ -22,8 +22,7 @@ public class FileUtilService {
     5.- Obtener lista de alumnos
     6.- Crear un metodo que obtenga todos los alumnos por Clase
      */
-    protected Map parsearFilePreceptorAndAlumnos(Resource resource, String nombreArchivo) throws JaviException {
-        Clase solucion = new Clase();
+    protected Map parsearFilePreceptorOrAlumnos(Resource resource, String nombreArchivo) throws JaviException {
         Map lista = new HashMap();
         String sentenceBuffer = "";
         //try-cath necesario para atrapar la exception del FileReader
@@ -36,30 +35,21 @@ public class FileUtilService {
                 //Condicion de que la oracion obtenida existe
                 while ((sentenceBuffer = br.readLine()) != null) {
                     //enviamos la oracion a un metodo, la cual, la procesa y termnina devolviendo un objeto Alumno
-                    Clase clase = parsearArchivoClasePreceptor(sentenceBuffer);
-                    solucion = clase;
-                    lista.put(clase.getNombreClase(), solucion);
+                    Clase clase = parsearArchivoAlumnosOrPreceptores(sentenceBuffer, nombreArchivo);
+                    lista.put(clase.getNombreClase(), clase);
                 }
             } else if (nombreArchivo == "ClasesModel.data") {
                 while ((sentenceBuffer = br.readLine()) != null) {
                     //enviamos la oracion a un metodo, la cual, la procesa y termnina devolviendo un objeto Alumno
-                    Alumno alumno = parsearArchivoAlumnos(sentenceBuffer);
+                    Clase clase = parsearArchivoAlumnosOrPreceptores(sentenceBuffer, nombreArchivo);
                     //un if que confirma si existe un mapa cuya clave es el String del nombre de la clase que se 
-                    if (lista.get(alumno.getNombreClase()) != null) {
-                        //Si existe, se crea una lista
-                        //Se agarra el valor de la clase obtenida para ponerlo en la lista
-                        List alumnosList = (ArrayList) lista.get(alumno.getNombreClase());
-                        //modificamos el valor agregando el objeto alumno
-                        alumnosList.add(alumno);
+                    if (lista.get(clase.getNombreClase()) != null) {
+                        List alumnosList = (ArrayList) lista.get(clase.getNombreClase());
+                        alumnosList.add(clase);
                     } else {
-                        //si no existe, se crea una lista
                         List listaAlumnos = new ArrayList();
-                        //se agrega al objeto alumno creado a la lista
-                        listaAlumnos.add(alumno);
-                        //Se establece un mapa
-                        //Usando como clave el nombre de la clase actualmente registrada en alumno
-                        //Colocando como valor a la lista de alumnos
-                        lista.put(alumno.getNombreClase(), listaAlumnos);
+                        listaAlumnos.add(clase);
+                        lista.put(clase.getNombreClase(), listaAlumnos);
                     }
                 }
             }
@@ -70,17 +60,19 @@ public class FileUtilService {
         }
         return lista;
     }
+
     /*
        String - no apto para concatenacion "a" + "d" = "ad" INEFICIENTE
        StringBuilder - apto para concatenar letras EFICIENTE
        StringBuffer - apto para concatenar letras EFICIENTE pero es synchronized
      */
-    protected Alumno parsearArchivoAlumnos(String sentenceBuffer) throws JaviException {
+    protected Clase parsearArchivoAlumnosOrPreceptores(String sentenceBuffer, String nombreArchivo) throws JaviException {
         String oracion = sentenceBuffer;
         int contador = 0;
         int valor = 0;
         Integer edad = 0;
         String nombre = "", apellido = "", nacionalidad = "", clase = "", preceptor = "";
+        Clase ayuda = new Clase();
         //for utilizado para recorrer toda la oracion
         for (int i = 0; i <= (oracion.length() - 1); i++) {
             //si el valor obtenido es igual a una coma o a un punto
@@ -95,73 +87,61 @@ public class FileUtilService {
                 valor++;
                 //incremento cuya funcion es evitar guardar la coma o el punto, pero su ausencia podria desatar errores
                 i++;
-                switch (valor) {
-                    case 1:
-                        clase = palabra;
-                        break;
-                    case 2:
-                        nombre = palabra;
-                        break;
-                    case 3:
-                        apellido = palabra;
-                        break;
-                    case 4:
-                        edad = Integer.parseInt(palabra);
-                        break;
-                    case 5:
-                        nacionalidad = palabra;
-                        break;
-                    case 6:
-                        preceptor = palabra;
-                        break;
-                    default:
-                        break;
-                }
-            }
-            //incremento utilizado para contar la cantidad de caracteres que tuvo la palabra anterior a la coma o punto
-            contador++;
-        }
-        //se crea un objeto Alumno y se le aplica sus caracteristicas
-        Alumno alumno = new Alumno(clase, nombre, apellido, nacionalidad, edad);
-        alumno.setNombreClase(clase);
-        Clase nombreClase = new Clase();
-        nombreClase.setNombreClase(nombre);
-        return alumno;
-    }
-
-    protected Clase parsearArchivoClasePreceptor(String sentenceBuffer) throws JaviException {
-        String oracion = sentenceBuffer;
-        int contador = 0;
-        int valor = 0;
-        String nombre = "", apellido = "", nacionalidad = "", clase = "";
-        for (int i = 0; i <= (oracion.length() - 1); i++) {
-            if (oracion.charAt(i) == ',' || oracion.charAt(i) == '.') {
-                String palabra = "";
-                palabra = oracion.substring((i - contador), (i));
-                contador = 0;
-                valor++;
-                i++;
-                switch (valor) {
-                    case 1:
-                        clase = palabra;
-                        break;
-                    case 2:
-                        nombre = palabra;
-                        break;
-                    case 3:
-                        apellido = palabra;
-                        break;
-                    case 4:
-                        nacionalidad = palabra;
-                        break;
-                    default:
-                        break;
+                if (nombreArchivo == "ClasesModel.data") {
+                    switch (valor) {
+                        case 1:
+                            clase = palabra;
+                            break;
+                        case 2:
+                            nombre = palabra;
+                            break;
+                        case 3:
+                            apellido = palabra;
+                            break;
+                        case 4:
+                            edad = Integer.parseInt(palabra);
+                            break;
+                        case 5:
+                            nacionalidad = palabra;
+                            break;
+                        case 6:
+                            preceptor = palabra;
+                            break;
+                        default:
+                            break;
+                    }
+                } else if (nombreArchivo == "PreceptorModel.data") {
+                    switch (valor) {
+                        case 1:
+                            clase = palabra;
+                            break;
+                        case 2:
+                            nombre = palabra;
+                            break;
+                        case 3:
+                            apellido = palabra;
+                            break;
+                        case 4:
+                            nacionalidad = palabra;
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
             contador++;
         }
-        Preceptor preceptorado = new Preceptor(nombre, apellido, nacionalidad);
-        Clase clase1 = new Clase(preceptorado, clase);
-        return clase1;
+        if (nombreArchivo == "ClasesModel.data") {
+            Alumno datosDelAlumno = new Alumno(clase, nombre, apellido, nacionalidad, edad);
+            Preceptor datoExtraParaRellenear = new Preceptor(preceptor, apellido, nacionalidad);
+            Clase informacionDelAlumnoContenida = new Clase(datoExtraParaRellenear, clase, datosDelAlumno);
+            ayuda = informacionDelAlumnoContenida;
+        } else if (nombreArchivo == "PreceptorModel.data") {
+            Alumno datoExtraParaRellenar = new Alumno();
+            Preceptor datosDelPreceptor = new Preceptor(nombre, apellido, nacionalidad);
+            Clase informacionDelPreceptorContenida = new Clase(datosDelPreceptor, clase, datoExtraParaRellenar);
+            ayuda = informacionDelPreceptorContenida;
+        }
+        return ayuda;
     }
 }

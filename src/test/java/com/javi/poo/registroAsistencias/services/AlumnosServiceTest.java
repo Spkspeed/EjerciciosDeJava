@@ -3,7 +3,6 @@ package com.javi.poo.registroAsistencias.services;
 import com.javi.poo.registroAsistencias.BaseTest;
 import com.javi.poo.registroAsistencias.exception.JaviException;
 import com.javi.poo.registroAsistencias.model.*;
-import com.javi.poo.registroAsistencias.services.AlumnoService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringRunner;

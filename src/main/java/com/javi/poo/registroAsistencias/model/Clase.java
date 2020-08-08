@@ -6,14 +6,15 @@ import java.util.List;
 public class Clase {
 
     private Preceptor preceptor;
+    private Alumno alumno;
     private String nombreClase;
-
     // Cuando creamos un constructor customizado desactivamos el constructor default asi que debemos declararlo explicitemente
-    public Clase(Preceptor preceptor, String nombreClase){
+    public Clase(Preceptor preceptor, String nombreClase, Alumno alumno){
         this.preceptor = preceptor;
         this.nombreClase = nombreClase;
+        this.alumno = alumno;
     }
-
+    // el codigo ya existe de antemano sin verse pero al crear el constructor es necesaria instanciarla de nuevo.
     public Clase() {}
 
     private List<Alumno> listaAlumnos = new ArrayList();
@@ -32,6 +33,13 @@ public class Clase {
 
     public void setPreceptor(Preceptor preceptor) {
         this.preceptor = preceptor;
+    }
+    public Alumno getAlumno() {
+        return alumno;
+    }
+
+    public void setAlumno(Alumno alumno) {
+        this.alumno = alumno;
     }
 
     public String getNombreClase() {

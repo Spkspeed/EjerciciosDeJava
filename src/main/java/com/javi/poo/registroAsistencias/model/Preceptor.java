@@ -7,4 +7,8 @@ public class Preceptor extends Persona {
         this.setNacionalidad(nacionalidad);
     }
 
+    public Preceptor(String clase, String nombre, String apellido, String nacionalidad) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

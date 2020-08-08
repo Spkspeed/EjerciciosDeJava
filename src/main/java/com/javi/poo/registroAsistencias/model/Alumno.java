@@ -3,9 +3,6 @@ package com.javi.poo.registroAsistencias.model;
 import com.javi.poo.registroAsistencias.exception.JaviException;
 
 public class Alumno extends Persona {
-
-    private String nombreClase;
-
     public Alumno() {}
 
     // Los constructores siempre deben ser publicos
@@ -20,7 +17,4 @@ public class Alumno extends Persona {
                 throw new JaviException("el nombre del alumno supera los 10 caracteres permitidos");
         }
     }
-
-    public void setNombreClase(String nombreClase){ this.nombreClase = nombreClase;}
-    public String getNombreClase(){ return nombreClase;}
 }

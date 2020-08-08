@@ -1,8 +1,7 @@
 package com.javi.poo.registroAsistencias.services;
 
 import com.javi.poo.registroAsistencias.exception.JaviException;
-import java.io.IOException;
-
+import com.javi.poo.registroAsistencias.model.Alumno;
 import com.javi.poo.registroAsistencias.model.Clase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,32 +9,38 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.List;
+import java.io.IOException;
 import java.util.Map;
 
 @RunWith(SpringRunner.class)
 public class FileServiceTest {
 
+    public static final String CLASE_A = "ClaseA";
+
     FileUtilService fileUtilService = new FileUtilService();
 
     @Test
-    public void testProgramLectorDelFichero() throws JaviException, IOException {
+    public void givenArchivoClasesWhenBeingReadThenShowStudents() throws JaviException, IOException {
         String archivo = "ClasesModel.data";
         Resource resource = new ClassPathResource(archivo);
         Map contenedor = fileUtilService.parsearFilePreceptorOrAlumnos(resource, archivo);
-        List<Clase> claseList = (List) contenedor.get("ClaseA");
-        for(Clase clase : claseList ){
+
+        Clase listaDeClase = (Clase) contenedor.get(CLASE_A);
+        //assertThat(claseList.isEmpty(), equalTo("Error, el nombre del alumno supera los 10 caracteres permitidos"));
+
+        for (Alumno itinerador : listaDeClase.getListaAlumnos()) {
             System.out.println("El siguiente alumno posee la siguiente informacion: ");
-            System.out.println("Clase: " + clase.getNombreClase());
-            System.out.println("Nombre: " + clase.getAlumno().getNombre());
-            System.out.println("Apellido: " + clase.getAlumno().getApellido());
-            System.out.println("Nacionalidad: " + clase.getAlumno().getNacionalidad());
-            System.out.println("Edad: " + clase.getAlumno().getEdad());
+            System.out.println("Clase: " + listaDeClase.getNombreClase());
+            System.out.println("Nombre: " + itinerador.getNombre());
+            System.out.println("Apellido: " + itinerador.getApellido());
+            System.out.println("Edad: " + itinerador.getEdad());
+            System.out.println("Nacionalidad: " + itinerador.getNacionalidad());
             System.out.println("----------------------------------------------");
         }
     }
+
     @Test
-    public void testProgramLectorDelFicheroDePreceptores() throws JaviException {
+    public void givenArchivoPreceptorWhenBeingReadThenShowPreceptor() throws JaviException {
         String archivo = "PreceptorModel.data";
         Resource resource = new ClassPathResource(archivo);
         Map contenedor = fileUtilService.parsearFilePreceptorOrAlumnos(resource, archivo);

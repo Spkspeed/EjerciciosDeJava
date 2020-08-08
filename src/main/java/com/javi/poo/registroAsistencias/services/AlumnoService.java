@@ -40,7 +40,6 @@ public class AlumnoService {
         System.out.println("La cantidad de alumnas entre las distintas nacionalidades es la siguiente: " + nacionalidades);
     }
 
-
     public void getNacionalidadesDistintas(Map contenedorLiberador) throws JaviException {
         // Set -> HashSet() no permite valores duplicados.
         Set<String> cantidad = new HashSet();

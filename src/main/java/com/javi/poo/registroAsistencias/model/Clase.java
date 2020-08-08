@@ -6,13 +6,12 @@ import java.util.List;
 public class Clase {
 
     private Preceptor preceptor;
-    private Alumno alumno;
+
     private String nombreClase;
+
     // Cuando creamos un constructor customizado desactivamos el constructor default asi que debemos declararlo explicitemente
-    public Clase(Preceptor preceptor, String nombreClase, Alumno alumno){
-        this.preceptor = preceptor;
+    public Clase(String nombreClase){
         this.nombreClase = nombreClase;
-        this.alumno = alumno;
     }
     // el codigo ya existe de antemano sin verse pero al crear el constructor es necesaria instanciarla de nuevo.
     public Clase() {}
@@ -23,8 +22,13 @@ public class Clase {
     public List<Alumno> getListaAlumnos() {
         return listaAlumnos;
     }
+
     public List<Docente> getListaDocente() {
         return listaDocente;
+    }
+
+    public void setListaAlumnos(List<Alumno> listaAlumnos) {
+        this.listaAlumnos = listaAlumnos;
     }
 
     public Preceptor getPreceptor() {
@@ -33,13 +37,6 @@ public class Clase {
 
     public void setPreceptor(Preceptor preceptor) {
         this.preceptor = preceptor;
-    }
-    public Alumno getAlumno() {
-        return alumno;
-    }
-
-    public void setAlumno(Alumno alumno) {
-        this.alumno = alumno;
     }
 
     public String getNombreClase() {

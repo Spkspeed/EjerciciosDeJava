@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class FileUtilService {
     /*
@@ -23,33 +25,37 @@ public class FileUtilService {
     6.- Crear un metodo que obtenga todos los alumnos por Clase
      */
     protected Map parsearFilePreceptorOrAlumnos(Resource resource, String nombreArchivo) throws JaviException {
-        Map lista = new HashMap();
-        String sentenceBuffer = "";
+        Map mapaDeClases = new HashMap();
+        String sentenceBuffer;
         //try-cath necesario para atrapar la exception del FileReader
         try {
             InputStream input = resource.getInputStream();
             InputStreamReader isReader = new InputStreamReader(input, "UTF-8");
             //Tipo de objeto utilizado para leer texto una linea a la vez
             BufferedReader br = new BufferedReader(isReader);
-            if (nombreArchivo == "PreceptorModel.data") {
+            if (nombreArchivo.equals("PreceptorModel.data")) {
                 //Condicion de que la oracion obtenida existe
                 while ((sentenceBuffer = br.readLine()) != null) {
                     //enviamos la oracion a un metodo, la cual, la procesa y termnina devolviendo un objeto Alumno
                     Clase clase = parsearArchivoAlumnosOrPreceptores(sentenceBuffer, nombreArchivo);
-                    lista.put(clase.getNombreClase(), clase);
+                    mapaDeClases.put(clase.getNombreClase(), clase);
                 }
-            } else if (nombreArchivo == "ClasesModel.data") {
+            } else if (nombreArchivo.equals("ClasesModel.data")) {
                 while ((sentenceBuffer = br.readLine()) != null) {
                     //enviamos la oracion a un metodo, la cual, la procesa y termnina devolviendo un objeto Alumno
-                    Clase clase = parsearArchivoAlumnosOrPreceptores(sentenceBuffer, nombreArchivo);
+                    Clase claseResult = parsearArchivoAlumnosOrPreceptores(sentenceBuffer, nombreArchivo);
                     //un if que confirma si existe un mapa cuya clave es el String del nombre de la clase que se 
-                    if (lista.get(clase.getNombreClase()) != null) {
-                        List alumnosList = (ArrayList) lista.get(clase.getNombreClase());
-                        alumnosList.add(clase);
+                    if (mapaDeClases.get(claseResult.getNombreClase()) != null){
+                        Clase claseConAlumno = (Clase) mapaDeClases.get(claseResult.getNombreClase());
+                        List<Alumno> newList =
+                                Stream.concat(claseConAlumno.getListaAlumnos().stream(),
+                                        claseResult.getListaAlumnos().stream()).collect(Collectors.toList());
+                        claseConAlumno.setListaAlumnos(newList);
+                        mapaDeClases.put(claseResult.getNombreClase(), claseConAlumno);
                     } else {
-                        List listaAlumnos = new ArrayList();
-                        listaAlumnos.add(clase);
-                        lista.put(clase.getNombreClase(), listaAlumnos);
+                        Clase claseConAlumnos = new Clase(claseResult.getNombreClase());
+                        claseConAlumnos.setListaAlumnos(claseResult.getListaAlumnos());
+                        mapaDeClases.put(claseResult.getNombreClase(), claseConAlumnos);
                     }
                 }
             }
@@ -58,7 +64,7 @@ public class FileUtilService {
         } catch (IOException e) {
             System.out.println("Archivo no encontrado");
         }
-        return lista;
+        return mapaDeClases;
     }
 
     /*
@@ -71,14 +77,14 @@ public class FileUtilService {
         int contador = 0;
         int valor = 0;
         Integer edad = 0;
-        String nombre = "", apellido = "", nacionalidad = "", clase = "", preceptor = "";
-        Clase ayuda = new Clase();
+        String nombre = "", apellido = "", nacionalidad = "", nombreClase = "", preceptor = "";
+        Clase clase = new Clase();
         //for utilizado para recorrer toda la oracion
         for (int i = 0; i <= (oracion.length() - 1); i++) {
             //si el valor obtenido es igual a una coma o a un punto
             if (oracion.charAt(i) == ',' || oracion.charAt(i) == '.') {
                 //se crea un String vacio cada vez que se repite este caso
-                String palabra = "";
+                String palabra;
                 //substring que logra capturar la palabra anterior a la coma o punto con la ayuda del atributo contador
                 palabra = oracion.substring((i - contador), (i));
                 //una vez obtenida la palabra el contador regresa al valor cero para que vuelva a contar los siguientes valores
@@ -87,10 +93,10 @@ public class FileUtilService {
                 valor++;
                 //incremento cuya funcion es evitar guardar la coma o el punto, pero su ausencia podria desatar errores
                 i++;
-                if (nombreArchivo == "ClasesModel.data") {
+                if (nombreArchivo.equals("ClasesModel.data")) {
                     switch (valor) {
                         case 1:
-                            clase = palabra;
+                            nombreClase = palabra;
                             break;
                         case 2:
                             nombre = palabra;
@@ -110,10 +116,10 @@ public class FileUtilService {
                         default:
                             break;
                     }
-                } else if (nombreArchivo == "PreceptorModel.data") {
+                } else if (nombreArchivo.equals("PreceptorModel.data")) {
                     switch (valor) {
                         case 1:
-                            clase = palabra;
+                            nombreClase = palabra;
                             break;
                         case 2:
                             nombre = palabra;
@@ -131,17 +137,17 @@ public class FileUtilService {
             }
             contador++;
         }
-        if (nombreArchivo == "ClasesModel.data") {
-            Alumno datosDelAlumno = new Alumno(clase, nombre, apellido, nacionalidad, edad);
-            Preceptor datoExtraParaRellenear = new Preceptor(preceptor, apellido, nacionalidad);
-            Clase informacionDelAlumnoContenida = new Clase(datoExtraParaRellenear, clase, datosDelAlumno);
-            ayuda = informacionDelAlumnoContenida;
-        } else if (nombreArchivo == "PreceptorModel.data") {
-            Alumno datoExtraParaRellenar = new Alumno();
+        if (nombreArchivo.equals("ClasesModel.data")) {
+            Alumno datosDelAlumno = new Alumno(nombreClase, nombre, apellido, nacionalidad, edad);
+            Clase informacionDelAlumnoContenida = new Clase(nombreClase);
+            informacionDelAlumnoContenida.getListaAlumnos().add(datosDelAlumno);
+            clase = informacionDelAlumnoContenida;
+        } else if (nombreArchivo.equals("PreceptorModel.data")) {
             Preceptor datosDelPreceptor = new Preceptor(nombre, apellido, nacionalidad);
-            Clase informacionDelPreceptorContenida = new Clase(datosDelPreceptor, clase, datoExtraParaRellenar);
-            ayuda = informacionDelPreceptorContenida;
+            Clase claseConPreceptor = new Clase(nombreClase);
+            claseConPreceptor.setPreceptor(datosDelPreceptor);
+            clase = claseConPreceptor;
         }
-        return ayuda;
+        return clase;
     }
 }

@@ -1,5 +1,8 @@
 package com.javi.poo.registroAsistencias.model;
 
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public class Persona {
 
     protected String nombre;

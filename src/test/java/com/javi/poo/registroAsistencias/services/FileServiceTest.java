@@ -15,6 +15,7 @@ import java.util.Map;
 @RunWith(SpringRunner.class)
 public class FileServiceTest {
 
+    //atributo constante, osea, no puede ser modificado.
     public static final String CLASE_A = "ClaseA";
 
     FileUtilService fileUtilService = new FileUtilService();

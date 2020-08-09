@@ -19,12 +19,28 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <!--
+        spring data, jpa, boot, frameworks, definiciones
+        Spring: bibloteca de aplicaciones, que nos permite utilizar una variedad de herramientas.
+        dependencias: descarga las herramientas para que esten a nuestra disposicion de forma automatica.
+        scope: limite de la realizacion del proceso.
+        -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>

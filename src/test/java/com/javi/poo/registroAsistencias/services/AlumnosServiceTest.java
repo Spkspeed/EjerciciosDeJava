@@ -3,8 +3,11 @@ package com.javi.poo.registroAsistencias.services;
 import com.javi.poo.registroAsistencias.BaseTest;
 import com.javi.poo.registroAsistencias.exception.JaviException;
 import com.javi.poo.registroAsistencias.model.*;
+import com.javi.poo.registroAsistencias.repository.AlumnoRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.*;
@@ -20,9 +23,24 @@ import static org.hamcrest.core.IsEqual.equalTo;
             Como hago para devolver varios valores: se los puede juntar en paquetes de informacion utilizando collections como el HashMap o ArrayList
  */
 @RunWith(SpringRunner.class)
+//comando para llevar a cabo pruebas que contienen contexto de Spring
+@SpringBootTest
 public class AlumnosServiceTest extends BaseTest {
 
+    //comando para poder instansiar a la clase del repositorio
+    @Autowired
+    AlumnoRepository alumnoRepository;
+
     AlumnoService alumnoService = new AlumnoService();
+
+    @Test
+    //utilizamos el repositorio
+    public void testAlumnoRepository() {
+        //utilizamos el metodo que establecimos en el repositorio
+        List result = alumnoRepository.findByNombreAndEdad("Carlos", 12);
+        //assert que verifica que los valores que llegaron a la lista anterior sean solo dos.
+        assertThat(result.size(), equalTo(2));
+    }
 
     @Test
     public void testAsistenciasHasAlumnosAndDocentesObjects() throws JaviException {

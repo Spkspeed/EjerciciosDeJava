@@ -19,6 +19,7 @@ public class Clase {
     private List<Alumno> listaAlumnos = new ArrayList();
     private List<Docente> listaDocente = new ArrayList();
 
+    
     public List<Alumno> getListaAlumnos() {
         return listaAlumnos;
     }

@@ -4,6 +4,7 @@ import com.javi.poo.registroAsistencias.BaseTest;
 import com.javi.poo.registroAsistencias.exception.JaviException;
 import com.javi.poo.registroAsistencias.model.*;
 import com.javi.poo.registroAsistencias.repository.AlumnoRepository;
+import com.javi.poo.registroAsistencias.repository.PreceptorRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,7 @@ public class AlumnosServiceTest extends BaseTest {
     //comando para poder instansiar a la clase del repositorio
     @Autowired
     AlumnoRepository alumnoRepository;
+    PreceptorRepository preceptorRepository;
 
     AlumnoService alumnoService = new AlumnoService();
 
@@ -37,10 +39,23 @@ public class AlumnosServiceTest extends BaseTest {
     //utilizamos el repositorio
     public void testAlumnoRepository() {
         //utilizamos el metodo que establecimos en el repositorio
-        List result = alumnoRepository.findByNombreAndEdad("Carlos", 12);
+        List result = alumnoRepository.findByNombre("Carlos");
+        System.out.println("---------------------------------------");
+        System.out.println("---------------------------------------");
+        System.out.println("---------------------------------------");
+        System.out.println("aqui va la lista");
+        System.out.println(result.get(0));
+        System.out.println("---------------------------------------");
+        System.out.println("---------------------------------------");
+        System.out.println("---------------------------------------");
         //assert que verifica que los valores que llegaron a la lista anterior sean solo dos.
-        assertThat(result.size(), equalTo(2));
+        assertThat(result.size(), equalTo(1));
     }
+    @Test
+    public void testPreceptorRepository(){
+        List preceptores = preceptorRepository.findByNombre("Robin");
+    }
+    
 
     @Test
     public void testAsistenciasHasAlumnosAndDocentesObjects() throws JaviException {

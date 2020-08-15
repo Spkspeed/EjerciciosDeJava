@@ -46,15 +46,25 @@ public class FileUtilService {
                     Clase claseResult = parsearArchivoAlumnosOrPreceptores(sentenceBuffer, nombreArchivo);
                     //un if que confirma si existe un mapa cuya clave es el String del nombre de la clase que se 
                     if (mapaDeClases.get(claseResult.getNombreClase()) != null){
+                        //llamamos al mapa establecido  en el caso de que la clase no existiera
                         Clase claseConAlumno = (Clase) mapaDeClases.get(claseResult.getNombreClase());
+                        //creamos una lista donde guardaremos el siguiente resultado
                         List<Alumno> newList =
+                                //utilizamos la herramienta Stream con el objetivo de juntar el contenido de dos listas
                                 Stream.concat(claseConAlumno.getListaAlumnos().stream(),
+                                        //luego de colocar la otra lista, usamos la herramienta collect para finalizar el objetivo
+                                        //tambien se destaca que en el ultimo parentesis establecemos en que tipo de resultado terminara
                                         claseResult.getListaAlumnos().stream()).collect(Collectors.toList());
+                        //agregamos la lista que creamos para guardar la fusion de listas a la lista de Clase usando el objeto clase
                         claseConAlumno.setListaAlumnos(newList);
+                        //sobreponemos el mapa existente con el objeto enlzado a la nueva lista de alumnos.
                         mapaDeClases.put(claseResult.getNombreClase(), claseConAlumno);
                     } else {
+                        //creamos un objeto clase con el cual metemos a la misma lista de alumnos de Clase al alumno actual
                         Clase claseConAlumnos = new Clase(claseResult.getNombreClase());
+                        //este mismo objeto esta enlazado con la lista de alumnos que por ahora solo guarda 1 alumno 
                         claseConAlumnos.setListaAlumnos(claseResult.getListaAlumnos());
+                        //como contraseña del mapa usamos el nombre del a clase, el cual obtenemos utilizando el objeto clase que trajimos
                         mapaDeClases.put(claseResult.getNombreClase(), claseConAlumnos);
                     }
                 }
@@ -140,6 +150,8 @@ public class FileUtilService {
         if (nombreArchivo.equals("ClasesModel.data")) {
             Alumno datosDelAlumno = new Alumno(nombreClase, nombre, apellido, nacionalidad, edad);
             Clase informacionDelAlumnoContenida = new Clase(nombreClase);
+            //utilizamos el objeto clase para llamar a la lista de alumnos existente en Clase
+            //luego le agregamos el alumno en este mismo momento
             informacionDelAlumnoContenida.getListaAlumnos().add(datosDelAlumno);
             clase = informacionDelAlumnoContenida;
         } else if (nombreArchivo.equals("PreceptorModel.data")) {

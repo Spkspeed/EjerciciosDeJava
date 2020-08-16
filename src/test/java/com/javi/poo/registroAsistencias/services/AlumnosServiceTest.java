@@ -4,6 +4,7 @@ import com.javi.poo.registroAsistencias.BaseTest;
 import com.javi.poo.registroAsistencias.exception.JaviException;
 import com.javi.poo.registroAsistencias.model.*;
 import com.javi.poo.registroAsistencias.repository.AlumnoRepository;
+import com.javi.poo.registroAsistencias.repository.ClaseRepository;
 import com.javi.poo.registroAsistencias.repository.PreceptorRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,7 +32,11 @@ public class AlumnosServiceTest extends BaseTest {
     //comando para poder instansiar a la clase del repositorio
     @Autowired
     AlumnoRepository alumnoRepository;
+    @Autowired
     PreceptorRepository preceptorRepository;
+    @Autowired
+    ClaseRepository claseRepository;
+
 
     AlumnoService alumnoService = new AlumnoService();
 
@@ -55,8 +60,11 @@ public class AlumnosServiceTest extends BaseTest {
     public void testPreceptorRepository(){
         List preceptores = preceptorRepository.findByNombre("Robin");
     }
-    
-
+    @Test
+    public void testClaseRepository(){
+        Clase clase = claseRepository.findById(9);
+    }
+   
     @Test
     public void testAsistenciasHasAlumnosAndDocentesObjects() throws JaviException {
         Map contenedorLiberador = createDataModel();

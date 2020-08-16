@@ -2,11 +2,18 @@ package com.javi.poo.registroAsistencias.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class Clase {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Integer id;
+    
     private Preceptor preceptor;
-
     private String nombreClase;
 
     // Cuando creamos un constructor customizado desactivamos el constructor default asi que debemos declararlo explicitemente
@@ -18,7 +25,6 @@ public class Clase {
 
     private List<Alumno> listaAlumnos = new ArrayList();
     private List<Docente> listaDocente = new ArrayList();
-
     
     public List<Alumno> getListaAlumnos() {
         return listaAlumnos;
@@ -46,5 +52,11 @@ public class Clase {
 
     public void setNombreClase(String nombreClase) {
         this.nombreClase = nombreClase;
+    }
+    public Integer getId(){
+        return id;
+    }
+    public void getId(Integer id){
+        this.id = id;
     }
 }

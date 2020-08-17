@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
 public interface ClaseRepository extends CrudRepository<Clase, Integer>  {
-   List<Alumno> findByListaAlumnos(List listaAlumnos);
+
+    //List<Alumno> findByListaAlumnos(List listaAlumnos);
+
     Clase findById(int id);
 }

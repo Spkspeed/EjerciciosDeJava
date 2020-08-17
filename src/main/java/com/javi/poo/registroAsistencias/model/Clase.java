@@ -2,30 +2,34 @@ package com.javi.poo.registroAsistencias.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Clase {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public Integer id;
-    
-    private Preceptor preceptor;
+    private Integer id;
+
     private String nombreClase;
+
+    @Transient
+    private Preceptor preceptor;
+
+    @Transient
+    private List<Alumno> listaAlumnos = new ArrayList();
+
+    @Transient
+    private List<Docente> listaDocente = new ArrayList();
 
     // Cuando creamos un constructor customizado desactivamos el constructor default asi que debemos declararlo explicitemente
     public Clase(String nombreClase){
         this.nombreClase = nombreClase;
     }
+
     // el codigo ya existe de antemano sin verse pero al crear el constructor es necesaria instanciarla de nuevo.
     public Clase() {}
 
-    private List<Alumno> listaAlumnos = new ArrayList();
-    private List<Docente> listaDocente = new ArrayList();
-    
     public List<Alumno> getListaAlumnos() {
         return listaAlumnos;
     }
@@ -53,10 +57,16 @@ public class Clase {
     public void setNombreClase(String nombreClase) {
         this.nombreClase = nombreClase;
     }
-    public Integer getId(){
+
+    public Integer getId() {
         return id;
     }
-    public void getId(Integer id){
+
+    public void setId(Integer id) {
         this.id = id;
+    }
+
+    public void setListaDocente(List<Docente> listaDocente) {
+        this.listaDocente = listaDocente;
     }
 }

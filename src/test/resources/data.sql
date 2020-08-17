@@ -7,7 +7,7 @@ INSERT INTO Preceptor (id, nombre, apellido, nacionalidad) VALUES
   (5, 'Carto', 'Luz', 'Argentino'),
   (6, 'Robin', 'Hood', 'Argentino'),
   (7, 'Carlos', 'Cruz', 'Argentino');
-INSERT INTO Clase (id, nombreClase) VALUES
+INSERT INTO Clase (id, nombre_clase) VALUES
   (8, 'ClaseA'),
   (9, 'ClaseB'),
   (10, 'ClaseC');

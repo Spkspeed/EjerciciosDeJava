@@ -11,6 +11,9 @@ import java.util.Map;
 public abstract class BaseTest {
 
     protected Map createDataModel() throws JaviException {
+        List<Alumno> listaAlumnos = new ArrayList<>();
+        List<Docente> listaDocentes = new ArrayList<>();
+
         Alumno alumno1 = new Alumno("Clase1","Emanuel", "Soliz", "Argentino", 22);
         Alumno alumno2 = new Alumno("Clase1","Javier", "Soliz", "Argentino", 21);
         Alumno alumno3 = new Alumno("Clase1","Ariel", "Jarpa Soliz", "Argentino", 22);
@@ -20,13 +23,14 @@ public abstract class BaseTest {
 
         Clase primeroA = new Clase();
         primeroA.setNombreClase("PrimeroA");
-        primeroA.getListaAlumnos().add(alumno1);
-        primeroA.getListaAlumnos().add(alumno2);
-        primeroA.getListaAlumnos().add(alumno3);
-        primeroA.getListaAlumnos().add(alumno4);
-        primeroA.getListaDocente().add(docente1);
+        listaAlumnos.add(alumno1);
+        listaAlumnos.add(alumno2);
+        listaAlumnos.add(alumno3);
+        listaAlumnos.add(alumno4);
+        listaDocentes.add(docente1);
         primeroA.setPreceptor(preceptor1);
-
+        primeroA.setListaAlumnos(new ArrayList(listaAlumnos));
+        primeroA.setListaDocente(new ArrayList(listaDocentes));
         Asistencia asistencia = new Asistencia(); //forma de llamar al map.
 
         asistencia.setNombreClase("PrimeroA");
@@ -43,14 +47,18 @@ public abstract class BaseTest {
         Docente docente2 = new Docente("Martina", "Cruñez", "Argentino");
         Preceptor preceptor2 = new Preceptor("Patricio", "notengoidea", "Argentino");
 
+        listaAlumnos = new ArrayList<>();
+        listaDocentes = new ArrayList<>();
+
         Clase primeroB = new Clase();
         primeroB.setNombreClase("PrimeroB");
-        primeroB.getListaAlumnos().add(alumno5);
-        primeroB.getListaAlumnos().add(alumno6);
-        primeroB.getListaAlumnos().add(alumno7);
-        primeroB.getListaDocente().add(docente2);
+        listaAlumnos.add(alumno5);
+        listaAlumnos.add(alumno6);
+        listaAlumnos.add(alumno7);
+        listaDocentes.add(docente2);
         primeroB.setPreceptor(preceptor2);
-
+        primeroB.setListaAlumnos(listaAlumnos);
+        primeroB.setListaDocente(listaDocentes);
         Asistencia asistencia2 = new Asistencia(); //forma de llamar al map.
 
         asistencia2.setNombreClase("PrimeroB");
@@ -66,11 +74,13 @@ public abstract class BaseTest {
 
         Clase primeroC = new Clase();
         primeroC.setNombreClase("PrimeroC");
-        primeroC.getListaAlumnos().add(alumno8);
-        primeroC.getListaAlumnos().add(alumno9);
-        primeroC.getListaAlumnos().add(alumno10);
-        primeroC.getListaDocente().add(docente3);
+        listaAlumnos.add(alumno8);
+        listaAlumnos.add(alumno9);
+        listaAlumnos.add(alumno10);
+        listaDocentes.add(docente3);
         primeroC.setPreceptor(preceptor3);
+        primeroC.setListaAlumnos(listaAlumnos);
+        primeroC.setListaDocente(listaDocentes);
 
         Asistencia asistencia3 = new Asistencia(); //forma de llamar al map.
         asistencia3.setNombreClase("PrimeroC");
@@ -89,12 +99,14 @@ public abstract class BaseTest {
 
         Clase primeroD = new Clase();
         primeroD.setNombreClase("PrimeroD");
-        primeroD.getListaAlumnos().add(alumno11);
-        primeroD.getListaAlumnos().add(alumno12);
-        primeroD.getListaAlumnos().add(alumno13);
-        primeroD.getListaAlumnos().add(alumno14);
-        primeroD.getListaDocente().add(docente4);
+        listaAlumnos.add(alumno11);
+        listaAlumnos.add(alumno12);
+        listaAlumnos.add(alumno13);
+        listaAlumnos.add(alumno14);
+        listaDocentes.add(docente4);
         primeroD.setPreceptor(preceptor4);
+        primeroD.setListaAlumnos(listaAlumnos);
+        primeroD.setListaDocente(listaDocentes);
 
         Asistencia asistencia4 = new Asistencia(); //forma de llamar al map.
         asistencia4.setNombreClase("PrimeroD");
@@ -104,6 +116,7 @@ public abstract class BaseTest {
         asistencia4.getAsistencias().put(alumno13, true);
         asistencia4.getAsistencias().put(alumno14, true);
         asistencia4.getAsistenciasPreceptor().put(preceptor4, true);
+
 
         List contenedorAulas = new ArrayList();
         contenedorAulas.add(primeroA);
@@ -123,5 +136,4 @@ public abstract class BaseTest {
 
         return contenedorDeModelo;
     }
-
 }

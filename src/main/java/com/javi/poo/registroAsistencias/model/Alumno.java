@@ -1,9 +1,7 @@
 package com.javi.poo.registroAsistencias.model;
 import com.javi.poo.registroAsistencias.exception.JaviException;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import javax.persistence.*;
 
 @Entity
 public class Alumno extends Persona {
@@ -11,6 +9,10 @@ public class Alumno extends Persona {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer id;
+
+    @ManyToOne
+    @JoinColumn(name = "clase_id")
+    public Clase clase;
 
     public Alumno() {
     }

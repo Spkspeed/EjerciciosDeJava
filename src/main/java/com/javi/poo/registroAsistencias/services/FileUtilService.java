@@ -150,6 +150,7 @@ public class FileUtilService {
         if (nombreArchivo.equals("ClasesModel.data")) {
             Alumno datosDelAlumno = new Alumno(nombreClase, nombre, apellido, nacionalidad, edad);
             Clase informacionDelAlumnoContenida = new Clase(nombreClase);
+            informacionDelAlumnoContenida.setListaAlumnos(new ArrayList<>());
             //utilizamos el objeto clase para llamar a la lista de alumnos existente en Clase
             //luego le agregamos el alumno en este mismo momento
             informacionDelAlumnoContenida.getListaAlumnos().add(datosDelAlumno);

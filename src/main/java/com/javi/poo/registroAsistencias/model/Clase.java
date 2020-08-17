@@ -16,11 +16,14 @@ public class Clase {
     @Transient
     private Preceptor preceptor;
 
-    @Transient
-    private List<Alumno> listaAlumnos = new ArrayList();
+    @OneToMany(mappedBy = "clase")
+    private List<Alumno> listaAlumnosExcelentes;
 
     @Transient
-    private List<Docente> listaDocente = new ArrayList();
+    private List<Alumno> listaAlumnos;
+
+    @Transient
+    private List<Docente> listaDocente;
 
     // Cuando creamos un constructor customizado desactivamos el constructor default asi que debemos declararlo explicitemente
     public Clase(String nombreClase){
@@ -29,10 +32,6 @@ public class Clase {
 
     // el codigo ya existe de antemano sin verse pero al crear el constructor es necesaria instanciarla de nuevo.
     public Clase() {}
-
-    public List<Alumno> getListaAlumnos() {
-        return listaAlumnos;
-    }
 
     public List<Docente> getListaDocente() {
         return listaDocente;
@@ -68,5 +67,17 @@ public class Clase {
 
     public void setListaDocente(List<Docente> listaDocente) {
         this.listaDocente = listaDocente;
+    }
+
+    public List<Alumno> getListaAlumnosExcelentes() {
+        return listaAlumnosExcelentes;
+    }
+
+    public void setListaAlumnosExcelentes(List<Alumno> listaAlumnosExcelentes) {
+        this.listaAlumnosExcelentes = listaAlumnosExcelentes;
+    }
+
+    public List<Alumno> getListaAlumnos() {
+        return listaAlumnos;
     }
 }

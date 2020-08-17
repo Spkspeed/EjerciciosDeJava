@@ -21,7 +21,7 @@ public class FileServiceTest {
     FileUtilService fileUtilService = new FileUtilService();
 
     @Test
-    public void givenArchivoClasesWhenBeingReadThenShowStudents() throws JaviException, IOException {
+    public void givenArchivoClasesWhenBeingReadThenShowStudents() throws JaviException {
         String archivo = "ClasesModel.data";
         Resource resource = new ClassPathResource(archivo);
         Map contenedor = fileUtilService.parsearFilePreceptorOrAlumnos(resource, archivo);

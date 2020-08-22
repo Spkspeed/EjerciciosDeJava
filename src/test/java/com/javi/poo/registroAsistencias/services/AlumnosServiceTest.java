@@ -37,7 +37,6 @@ public class AlumnosServiceTest extends BaseTest {
     @Autowired
     ClaseRepository claseRepository;
 
-
     AlumnoService alumnoService = new AlumnoService();
 
     @Test
@@ -54,7 +53,7 @@ public class AlumnosServiceTest extends BaseTest {
         System.out.println("---------------------------------------");
         System.out.println("---------------------------------------");
         //assert que verifica que los valores que llegaron a la lista anterior sean solo dos.
-        assertThat(result.size(), equalTo(1));
+        assertThat(result.size(), equalTo(4));
     }
     @Test
     public void testPreceptorRepository(){
@@ -62,7 +61,8 @@ public class AlumnosServiceTest extends BaseTest {
     }
     @Test
     public void testClaseRepository(){
-        Clase clase = claseRepository.findById(9);
+        Clase prueba = new Clase();
+        List<Clase> clase = claseRepository.findByNombreClase("ClaseA");
     }
    
     @Test

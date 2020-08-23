@@ -12,14 +12,7 @@ public class Docente extends Persona {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer id;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    
     @ManyToOne
     @JoinColumn(name = "docentes_id")
     public Clase docentes;
@@ -31,5 +24,12 @@ public class Docente extends Persona {
         if (nombre.length() >= 10) {
                 throw new JaviException("el nombre del docente supera los 10 caracteres permitidos");
         }
+    }
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

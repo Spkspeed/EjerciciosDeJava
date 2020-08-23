@@ -1,6 +1,5 @@
 package com.javi.poo.registroAsistencias.model;
 
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 
@@ -13,13 +12,14 @@ public class Clase {
 
     private String nombreClase;
 
-    @Transient
+    @OneToOne
+    @JoinColumn(name = "preceptor_id")
     private Preceptor preceptor;
-    
+
     @OneToMany(mappedBy = "clase")
     private List<Alumno> listaAlumnos;
 
-    @OneToMany(mappedBy = "docentes")
+    @OneToMany(mappedBy = "clase")
     private List<Docente> listaDocente;
 
     // Cuando creamos un constructor customizado desactivamos el constructor default asi que debemos declararlo explicitemente

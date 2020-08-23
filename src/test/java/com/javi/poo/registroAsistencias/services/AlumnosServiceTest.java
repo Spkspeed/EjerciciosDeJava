@@ -5,6 +5,7 @@ import com.javi.poo.registroAsistencias.exception.JaviException;
 import com.javi.poo.registroAsistencias.model.*;
 import com.javi.poo.registroAsistencias.repository.AlumnoRepository;
 import com.javi.poo.registroAsistencias.repository.ClaseRepository;
+import com.javi.poo.registroAsistencias.repository.DocenteRepository;
 import com.javi.poo.registroAsistencias.repository.PreceptorRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.transaction.Transactional;
 import java.util.*;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -32,10 +34,15 @@ public class AlumnosServiceTest extends BaseTest {
     //comando para poder instansiar a la clase del repositorio
     @Autowired
     AlumnoRepository alumnoRepository;
+
     @Autowired
     PreceptorRepository preceptorRepository;
+
     @Autowired
     ClaseRepository claseRepository;
+
+    @Autowired
+    DocenteRepository docenteRepository;
 
     AlumnoService alumnoService = new AlumnoService();
 
@@ -43,26 +50,64 @@ public class AlumnosServiceTest extends BaseTest {
     //utilizamos el repositorio
     public void testAlumnoRepository() {
         //utilizamos el metodo que establecimos en el repositorio
-        List result = alumnoRepository.findByNombre("Carlos");
+        List<Alumno> result = alumnoRepository.findByNombre("Carlos");
         System.out.println("---------------------------------------");
         System.out.println("---------------------------------------");
         System.out.println("---------------------------------------");
-        System.out.println("aqui va la lista");
-        System.out.println(result.get(0));
-        System.out.println("---------------------------------------");
-        System.out.println("---------------------------------------");
-        System.out.println("---------------------------------------");
+        System.out.println("AlumnoRepository");
+        for(Alumno alumno : result){
+            System.out.println(alumno.getNombre());
+        }
         //assert que verifica que los valores que llegaron a la lista anterior sean solo dos.
         assertThat(result.size(), equalTo(4));
     }
     @Test
     public void testPreceptorRepository(){
-        List preceptores = preceptorRepository.findByNombre("Robin");
+        System.out.println("---------------------------------------");
+        System.out.println("---------------------------------------");
+        System.out.println("---------------------------------------");
+        System.out.println("PreceptorRepository");
+
+        List<Preceptor> preceptores = preceptorRepository.findByNombreAndApellido("Robin","Hood");
+
+        for(Preceptor preceptor : preceptores){
+            System.out.println(preceptor.getNombre() + " " + preceptor.getApellido());
+        }
+
+        assertThat(preceptores.size(), equalTo(1));
     }
+
     @Test
+    @Transactional
     public void testClaseRepository(){
-        Clase prueba = new Clase();
-        List<Clase> clase = claseRepository.findByNombreClase("ClaseA");
+        System.out.println("---------------------------------------");
+        System.out.println("---------------------------------------");
+        System.out.println("---------------------------------------");
+
+        System.out.println("ClaseRepository");
+
+        Clase clase = claseRepository.findByNombreClase("ClaseA");
+
+         System.out.println(clase.getNombreClase());
+
+        for (Alumno iterar : clase.getListaAlumnos()){
+            System.out.println(iterar.getNombre());
+        }
+
+        assertThat(clase.getListaAlumnos().size(), equalTo(7));
+    }
+
+    @Test
+    public void testDocenteRepository(){
+        System.out.println("---------------------------------------");
+        System.out.println("---------------------------------------");
+        System.out.println("---------------------------------------");
+        System.out.println("DocenteRepository");
+        List<Docente> docentes = docenteRepository.findByNombre("Carto");
+        for(Docente docente : docentes){
+            System.out.println(docente.getNombre());
+        }
+        assertThat(docentes.size(), equalTo(1));
     }
    
     @Test

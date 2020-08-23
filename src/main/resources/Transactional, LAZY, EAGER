@@ -1,0 +1,15 @@
+Ejecutar operaciones de forma
+ç
+Transactional: lleva a cabo un conjunto de operaciones encapsuladas en un proceso que solo se materelizacion si la
+transaccion se completa de forma satisfactoria.
+
+Rollbackear: cuando una transaccion falla, a pesar de todos los cambios hechos, todo se vuelve para atras, hasta
+volver al punto de inicio.
+
+Base datos, se pueden obtener de las siguientes formas:
+
+LAZY: obtiene el valor del propiedades de primer nivel, las relationship no se traen en este caso, para
+que sean traidas debemos estar en una transaccion.
+
+EAGER: obtiene toda la informacion relacionada al dato que indicamos y trae todas la relationship que esta anclada a
+esta informacion.

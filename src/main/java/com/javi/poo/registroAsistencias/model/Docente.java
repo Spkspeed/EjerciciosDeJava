@@ -14,8 +14,12 @@ public class Docente extends Persona {
     public Integer id;
     
     @ManyToOne
-    @JoinColumn(name = "docentes_id")
-    public Clase docentes;
+    @JoinColumn(name = "clase_id")
+    public Clase clase;
+
+    public Docente(){
+    }
+
     public Docente(String nombre, String apellido, String nacionalidad) throws JaviException { // obliga a que ingrese un nombre y appellido.
         this.setNombre(nombre);
         this.setApellido(apellido);

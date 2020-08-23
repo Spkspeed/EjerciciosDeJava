@@ -17,6 +17,7 @@ public interface AlumnoRepository extends CrudRepository<Alumno, Integer> {
     //decidimos cuantos en base a cuantos valores traer la informacion y definimos de que tipo son
     //el intger edad proviene de "alumno" que lo saca de "persona"
     List<Alumno> findByNombreAndEdad(String nombre, Integer edad);
+
     //otra forma de buscar la informacion
     Alumno findById(int id);
 }

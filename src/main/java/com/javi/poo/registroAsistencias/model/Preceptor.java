@@ -1,14 +1,14 @@
 package com.javi.poo.registroAsistencias.model;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import javax.persistence.*;
+
 @Entity
 public class Preceptor extends Persona {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer id;
+
 
     public Preceptor(){
     }

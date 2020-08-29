@@ -3,18 +3,14 @@ package com.javi.poo.registroAsistencias.services;
 import com.javi.poo.registroAsistencias.BaseTest;
 import com.javi.poo.registroAsistencias.exception.JaviException;
 import com.javi.poo.registroAsistencias.model.*;
-import com.javi.poo.registroAsistencias.repository.AlumnoRepository;
-import com.javi.poo.registroAsistencias.repository.ClaseRepository;
-import com.javi.poo.registroAsistencias.repository.DocenteRepository;
-import com.javi.poo.registroAsistencias.repository.PreceptorRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.transaction.Transactional;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -27,99 +23,23 @@ import static org.hamcrest.core.IsEqual.equalTo;
             Como hago para devolver varios valores: se los puede juntar en paquetes de informacion utilizando collections como el HashMap o ArrayList
  */
 @RunWith(SpringRunner.class)
-//comando para llevar a cabo pruebas que contienen contexto de Spring
-@SpringBootTest
+@SpringBootTest //comando para llevar a cabo pruebas que contienen contexto de Spring
 public class AlumnosServiceTest extends BaseTest {
 
-    //comando para poder instansiar a la clase del repositorio
     @Autowired
-    AlumnoRepository alumnoRepository;
+    AlumnoService alumnoService;
 
-    @Autowired
-    PreceptorRepository preceptorRepository;
-
-    @Autowired
-    ClaseRepository claseRepository;
-
-    @Autowired
-    DocenteRepository docenteRepository;
-
-    AlumnoService alumnoService = new AlumnoService();
-    AlumnoRepositoryService alumnoTest = new AlumnoRepositoryService();
-    
     @Test
-    public void AlumnoRepositoryServiceTest(){
-    }
-    @Test
-    //utilizamos el repositorio
-    public void testAlumnoRepository() {
-        System.out.println("---------------------------------------");
-        System.out.println("---------------------------------------");
-        System.out.println("---------------------------------------");
-        System.out.println("AlumnoRepository");
-         //utilizamos el metodo que establecimos en el repositorio
-        List<Alumno> result = alumnoRepository.findByNombre("Carlos");
-        for(Alumno alumno : result){
+    public void testSearchOfStudent(){
+        List<Alumno> listaNombreDeAlumno = alumnoService.busquedaDeAlumnoMedianteNombre("Carlos");
+        System.out.println("-----------------------------------------------------");
+        System.out.println("Resultados de busqueda con el nombre Carlos:");
+        for(Alumno alumno : listaNombreDeAlumno){
             System.out.println(alumno.getNombre());
         }
-        //assert que verifica que los valores que llegaron a la lista anterior sean solo dos.
-        assertThat(result.size(), equalTo(4));
-    }
-    @Test
-    public void testPreceptorRepository(){
-        System.out.println("---------------------------------------");
-        System.out.println("---------------------------------------");
-        System.out.println("---------------------------------------");
-        System.out.println("PreceptorRepository");
-
-        List<Preceptor> preceptores = preceptorRepository.findByNombreAndApellido("Robin","Hood");
-
-        for(Preceptor preceptor : preceptores){
-            System.out.println(preceptor.getNombre() + " " + preceptor.getApellido());
-        }
-
-        assertThat(preceptores.size(), equalTo(1));
+        System.out.println("-----------------------------------------------------");
     }
 
-    //el Transactional nos ayuda a llevar a cabo este particular test que no podria funcionar normalmente debido a sus caracteristicas
-    @Test
-    //el punto crucial para usar esto es en mantener el objeto Clase
-    @Transactional
-    public void testClaseRepository(){
-        System.out.println("---------------------------------------");
-        System.out.println("---------------------------------------");
-        System.out.println("---------------------------------------");
-        System.out.println("ClaseRepository");
-
-        //buscamos el nombre ClaseA y se guarda en el nombre_clase con el objeto Clase creado
-        //esto ocurre gracias al metodo establecido en claseRepository
-        Clase clase = claseRepository.findByNombreClase("ClaseA");
-        //el objeto anterior mantiene guardado el nombreClase gracias al Transactional que mantiene viva el proceso
-        System.out.println(clase.getNombreClase());
-
-        //tambien por el Transactional ahora podemos ir a la lista de alumnos que se agrego automaticamente gracias a la conexion establecida en las columnas por medio de sus clases correspondientes
-        for (Alumno iterar : clase.getListaAlumnos()){
-            System.out.println(iterar.getNombre());
-        }
-        System.out.println(clase.getListaDocente().get(0).getNombre());
-
-        //y por ultimo podemos acceder a la lista de alumnos y realizar un assertThat
-        assertThat(clase.getListaAlumnos().size(), equalTo(7));
-    }
-
-    @Test
-    public void testDocenteRepository(){
-        System.out.println("---------------------------------------");
-        System.out.println("---------------------------------------");
-        System.out.println("---------------------------------------");
-        System.out.println("DocenteRepository");
-        List<Docente> docentes = docenteRepository.findByNombre("Carto");
-        for(Docente docente : docentes){
-            System.out.println(docente.getNombre());
-        }
-        assertThat(docentes.size(), equalTo(1));
-    }
-   
     @Test
     public void testAsistenciasHasAlumnosAndDocentesObjects() throws JaviException {
         Map contenedorLiberador = createDataModel();

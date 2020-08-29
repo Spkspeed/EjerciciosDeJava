@@ -3,10 +3,17 @@ package com.javi.poo.registroAsistencias.services;
 import com.javi.poo.registroAsistencias.exception.JaviException;
 import com.javi.poo.registroAsistencias.model.Alumno;
 import com.javi.poo.registroAsistencias.model.Clase;
+import com.javi.poo.registroAsistencias.repository.AlumnoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.*;
 
+@Service
 public class AlumnoService {
+
+    @Autowired
+    AlumnoRepository alumnoRepository;
 
     /*
         1.- Cuando manejamos un map con multiples contadores, debemos buscar una iniciativa de incrementadores que se ajusten a un numero N de nacionalidades
@@ -16,6 +23,7 @@ public class AlumnoService {
             incrementador++: realiza la accion de aumentar el valor de un entero en 1
         4.- El value de un map puede ser usado como contador: cada key dentro de un map tiene su propio value, el cual, podemos modificar utilzando la key correcta y un incrementador.
      */
+
     public void nacionalidadesAlumno(Map contenedorLiberador) throws JaviException {
         List<Clase> listaClases = (List) contenedorLiberador.get("aulas");
         String nacionalidad;
@@ -53,4 +61,9 @@ public class AlumnoService {
         System.out.println(cantidad);
     }
 
+    public List busquedaDeAlumnoMedianteNombre(String nombre){
+        //utilizamos el metodo que establecimos en el repositorio
+        List<Alumno> result = alumnoRepository.findByNombre(nombre);
+        return result;
+    }
 }

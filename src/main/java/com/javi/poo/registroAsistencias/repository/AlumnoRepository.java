@@ -8,6 +8,7 @@ import java.util.List;
 //Clase que lleva a cabo la importacio de informacion solicitada para alojarla de la forma que deseemos
 //debe ser establecida como una interfaz ya que no se llevan a cabo procesos con codigo y tambien es utilizada como marca para el Spring
 //se extiende de un reopositorio interno y exige que de que clase sacar la informacion y de que tipo de atributo es el ID
+//El CrudRepository sirve para que el Autowired logre localizar este repository
 public interface AlumnoRepository extends CrudRepository<Alumno, Integer> {
 
     //decidimos en como alojar la informacion

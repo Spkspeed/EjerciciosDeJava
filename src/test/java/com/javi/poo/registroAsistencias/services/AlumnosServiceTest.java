@@ -45,16 +45,20 @@ public class AlumnosServiceTest extends BaseTest {
     DocenteRepository docenteRepository;
 
     AlumnoService alumnoService = new AlumnoService();
-
+    AlumnoRepositoryService alumnoTest = new AlumnoRepositoryService();
+    
+    @Test
+    public void AlumnoRepositoryServiceTest(){
+    }
     @Test
     //utilizamos el repositorio
     public void testAlumnoRepository() {
-        //utilizamos el metodo que establecimos en el repositorio
-        List<Alumno> result = alumnoRepository.findByNombre("Carlos");
         System.out.println("---------------------------------------");
         System.out.println("---------------------------------------");
         System.out.println("---------------------------------------");
         System.out.println("AlumnoRepository");
+         //utilizamos el metodo que establecimos en el repositorio
+        List<Alumno> result = alumnoRepository.findByNombre("Carlos");
         for(Alumno alumno : result){
             System.out.println(alumno.getNombre());
         }
@@ -77,23 +81,29 @@ public class AlumnosServiceTest extends BaseTest {
         assertThat(preceptores.size(), equalTo(1));
     }
 
+    //el Transactional nos ayuda a llevar a cabo este particular test que no podria funcionar normalmente debido a sus caracteristicas
     @Test
+    //el punto crucial para usar esto es en mantener el objeto Clase
     @Transactional
     public void testClaseRepository(){
         System.out.println("---------------------------------------");
         System.out.println("---------------------------------------");
         System.out.println("---------------------------------------");
-
         System.out.println("ClaseRepository");
 
+        //buscamos el nombre ClaseA y se guarda en el nombre_clase con el objeto Clase creado
+        //esto ocurre gracias al metodo establecido en claseRepository
         Clase clase = claseRepository.findByNombreClase("ClaseA");
+        //el objeto anterior mantiene guardado el nombreClase gracias al Transactional que mantiene viva el proceso
+        System.out.println(clase.getNombreClase());
 
-         System.out.println(clase.getNombreClase());
-
+        //tambien por el Transactional ahora podemos ir a la lista de alumnos que se agrego automaticamente gracias a la conexion establecida en las columnas por medio de sus clases correspondientes
         for (Alumno iterar : clase.getListaAlumnos()){
             System.out.println(iterar.getNombre());
         }
+        System.out.println(clase.getListaDocente().get(0).getNombre());
 
+        //y por ultimo podemos acceder a la lista de alumnos y realizar un assertThat
         assertThat(clase.getListaAlumnos().size(), equalTo(7));
     }
 

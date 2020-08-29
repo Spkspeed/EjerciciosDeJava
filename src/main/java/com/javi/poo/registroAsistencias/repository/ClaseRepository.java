@@ -7,6 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface ClaseRepository extends CrudRepository<Clase, Integer>  {
 
+    //busca un atributo llamado nombreClase para guardar el dato ingresado con un objeto Clase
     Clase findByNombreClase(String nombreClase);
 
     List<Alumno> findByListaAlumnos(List listaAlumnos);

@@ -1,0 +1,75 @@
+
+Que es una annotation
+    En programación, una Anotación Java es una forma de añadir metadatos al código fuente Java que están disponibles para
+    la aplicación en tiempo de ejecución o de compilación. Muchas veces se usa como una alternativa a la tecnología XML.
+    Las Anotaciones Java pueden añadirse a los elementos de programa tales como clases, métodos, metadatos, campos,
+    parámetros, variables locales, y paquetes, las Anotaciones Java son completamente accesibles al
+    programador, mientras que el software se ejecuta, usando reflexión.
+
+Spring Context:
+    Es el espacio de memoria donde levanta el framework de spring y se corren todos sus componentes, debemos asegurarnos
+    de estar dentro del contexto si queremos utilizar los componentes de spring.
+
+Spring FrameWork:
+
+    https://spring.io/projects/spring-framework
+
+    Transactions:
+        Extender explicacion:
+        Ejecutar operaciones de forma
+        Transactional: lleva a cabo un conjunto de operaciones encapsuladas en un proceso que solo se materializan si la
+        transaccion se completa de forma satisfactoria.
+        Rollbackear: cuando una transaccion falla, a pesar de todos los cambios hechos, todo se vuelve para atras, hasta
+        volver al punto de inicio.
+
+    Dependency injection:
+        Explicar para que sirve cada annotation y en que parte de la osquestracion se debe colocar:
+        @Autowired, @Service, (@Repository @Component)
+
+        Como funciona el autowired desde un test unitario hasta conectarse con un repositorio?
+
+    Spring bean: es una unidad instanciada inyectable de spring para que sea utilizada en los componentes donde querramos
+        utilizarla por defecto suelen ser singleton.
+
+Spring Data:
+
+    https://spring.io/projects/spring-data
+
+    Spring JPA:
+        Base datos, se pueden obtener de las siguientes formas:
+        LAZY: obtiene el valor del propiedades de primer nivel, las relationship no se traen en este caso, para
+        que sean traidas debemos estar en una transaccion.
+        EAGER: obtiene toda la informacion relacionada al dato que indicamos y trae todas la relationship que esta anclada a
+        esta informacion.
+
+        OneToMany
+        OneToOne
+        ManyToOne
+        ManyToMany como se arma?
+
+        @Entity
+            Explicar
+
+
+Spring Boot:
+
+        Create stand-alone Spring applications: nos permite ejecutar aplicaciones de forma que podamos probarlas en el
+        momento realizando minimos cambios en la configuracion.
+
+        Embed "Tomcat", "Jetty" or Undertow directly (no need to deploy WAR files): podemos desplegar un servidor web al
+        instante sin tener que llevar a cabo un largo proceso de configuracion para lograrlo como sucedia cuando creaba
+        un archivo war, ahora solo crea un jar autoejecutable.
+
+        Provide opinionated 'starter' dependencies to simplify your build configuration: nos ayuda a simplificar el manejo
+        de las dependencias de diferentes componentes con solo agregarlas en la configuracion de maven or graddle.
+
+        Automatically configure Spring and 3rd party libraries whenever possible: nos ayuda a configurar de manera
+        automatica los componentes que agregamos para que podamos utilizarlas en cualquier momento con solo llamarlas.
+
+        Provide production-ready features such as metrics, health checks, and externalized configuration: nos otorga
+        un componente en nuestra aplicacion que nos informa el estado de la aplicacion corriendo con diferentes metricas
+        https://www.callicoder.com/spring-boot-actuator/
+
+        Absolutely no code generation and no requirement for XML configuration: ya no se usa autogeneracion de codigo
+        ni configuracion por xml para los beans.
+

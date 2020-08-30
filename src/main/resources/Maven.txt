@@ -1,14 +1,21 @@
-/*
-1. se utiliza para llevar a cabo controles sobre los codigos que construimos.
 
-2. Que son los ciclos de vida: las diferentes etapas del proceso que lleva a cabo un codigo y en las
+1.- se utiliza para llevar el control de los cicles de construccion sobre el codigo que construimos.
+
+2.- Que son los ciclos de vida: las diferentes etapas del proceso que lleva a cabo un codigo y en las
  que podemos interferir.
+    clean:
+    compile:
+    test:
+    package:
+    verify:
+    install:
 
 3.- Que son los modulos: son las herramientas que nos permiten poder realizar las diferentes
-funcionalidades correctamente (usar redes, conexiones a bases de datos, sistemas de seguridad).
+    funcionalidades correctamente (usar redes, conexiones a bases de datos, sistemas de seguridad).
 
-4.- Que comandos se usan en maven por linea de comandos: " mvn clean install "
-
-
- instalacion: binario.zip, agregarlo al path de window.
- */
+4.- Que comandos se usan en maven por linea de comandos:
+     mvn clean install:
+     mvn package:
+     mvn compile:
+     mvn spring-boot:run:
+     mvn clean install -Dmaven.test.skip=true

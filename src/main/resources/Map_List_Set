@@ -1,13 +1,20 @@
 DIFERENCIAS ENTRE LAS DISTINTAS INTERFACES
 
+
 Map: sirve para almacenar elementos asignandoles una clave una necesaria para acceder al tipo de valor que contienen,
 el cual, puede ser de cualquier tipo y no puede haber claves repetidas.
 
 List: sirve para almacenar elementos de forma ordenada a los cuales se puede acceder a cualquiera de forma aleatoria.
+
 Arraylist -> Permite valores duplicados y es rapido para obtener y modificar elementos y no es synchronized
+
 Vector -> Antiguo, ya no es usado porque es (Synchronized)
+
 LinkedList -> Mejor para remover y agregar elementos pero es lento para obtener y modificar elementos.
 
+
 Set: sirve para almacenar elementos no repetidos, que esta desordenados u ordenados.
+
 HashSet -> No permite valores duplicados y estan desordenados
+
 LinkedHashSet() -> TreeSet() -> SortedSet(Comparable)

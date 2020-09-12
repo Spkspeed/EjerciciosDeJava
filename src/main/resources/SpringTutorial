@@ -7,7 +7,7 @@ Que es una annotation
     programador, mientras que el software se ejecuta, usando reflexión.
 
 Spring Context:
-    Es el espacio de memoria donde levanta el framework de spring y se corren todos sus componentes, debemos asegurarnos
+    Es el espacio de memoria donde se levanta el framework de spring y se corren todos sus componentes, debemos asegurarnos
     de estar dentro del contexto si queremos utilizar los componentes de spring.
 
 Spring FrameWork:

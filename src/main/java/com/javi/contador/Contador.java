@@ -1,33 +1,38 @@
 package com.javi.contador;
 
 public class Contador {
-    String[] letras = {"A","B","C","D","F","G","H","I","J"};
-    String cadena = "ABCDEFGHIJKLMNÑOPQWTRSYXZ";
+    String abecedario = "ABCDEFGHIJKLMNÑOPQWTRSYXZ";
     int posicionActual = 0;
-    int[] camino = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-    int variable = 13;
     int posicionAnterior = 0;
-    int resultado = 0;
+
 
     public void contadorCaracteres (String palabra) {
         for (int i = 0; i < palabra.length(); i++) {
-            posicionActual =posicionAnterior;
-            for (int y = 0; y < cadena.length(); y++){
-                if (palabra.charAt(i) == cadena.charAt(y)){
-                    //confirmar si te da el indice exacto de cada letra
-                    posicionActual = y;
+            for (int y = 0; y < abecedario.length(); y++){
 
-                    if (posicionActual >12){
-                        posicionActual = variable;
+                if (palabra.charAt(i) == abecedario.charAt(y)){
+                    System.out.println("-------la posicion anterior es: " + posicionAnterior);
+                    System.out.println("-------la posicion actual es: " + posicionActual);
+
+                    int distanciaEntreVariables = posicionActual - posicionAnterior;
+
+                    //si el resultado es negativo lo transformo a positivo
+                    if (distanciaEntreVariables < 0){
+                        distanciaEntreVariables = -distanciaEntreVariables;
                     }
-                    System.out.println(posicionActual);
-                    System.out.println(posicionActual - posicionAnterior);
+                    if (distanciaEntreVariables > 12){
+                        System.out.println("la distancia entre variables es mayor a 12, se debe tomar el otro camino.");
+                        distanciaEntreVariables = 25 - distanciaEntreVariables;
+                        System.out.println("distancia corregida: " + distanciaEntreVariables);
+
+                    } else {
+                        System.out.println("distancia: " + distanciaEntreVariables);
+                    }
                     posicionAnterior = posicionActual;
+                    posicionActual = 0;
                     break;
-                }
-                posicionActual++;
-                if (posicionActual >12){
-                    variable--;
+                } else{
+                    posicionActual++;
                 }
             }
         }
